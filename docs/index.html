@@ -114,7 +114,7 @@ nav{
   object-fit:cover;border-radius:50%;
   display:block;
 }
-/* ── BREATHING BUBBLES (ambient orbs around photo) ── */
+/* ── BREATHING BUBBLES ── */
 .bubbles{
   position:absolute;inset:-30px;border-radius:50%;
   pointer-events:none;z-index:0;
@@ -204,7 +204,7 @@ nav{
   line-height:1;
 }
 .stat-label{font-size:.82rem;color:var(--muted2);margin-top:.2rem}
-/* cta buttons */
+/* cta */
 .hero-ctas{
   display:flex;gap:.75rem;flex-wrap:wrap;
   opacity:0;animation:up .5s .44s forwards;
@@ -240,7 +240,7 @@ nav{
 }
 hr.div{border:none;border-top:1px solid var(--border)}
 
-/* ── ABOUT — single card, pink/red glowing border ── */
+/* ── ABOUT ── */
 .about-card{
   max-width:860px;margin:0 auto;
   background:var(--card);
@@ -304,7 +304,7 @@ hr.div{border:none;border-top:1px solid var(--border)}
 .proj-more{font-size:.78rem;color:var(--pink);display:inline-flex;align-items:center;gap:.3rem;transition:gap .18s}
 .proj-card:hover .proj-more{gap:.55rem}
 
-/* ── SKILLS ── */
+/* ── SKILLS — */
 .skills-2col{
   display:grid;grid-template-columns:1fr 1fr;
   gap:3rem 4rem;
@@ -352,7 +352,7 @@ hr.div{border:none;border-top:1px solid var(--border)}
 .sp-cfw{background:#be185d}
 .sp-hw{background:#374151}
 .sp-oss{background:#065f46}
-/* plain text pills for domains */
+/* domain pills */
 .sp-plain{
   background:var(--card);color:var(--muted2);
   border:1px solid var(--border);font-weight:500;
@@ -410,7 +410,7 @@ footer{
 footer .fo{color:var(--orange)}
 footer .fp{color:var(--purple2)}
 
-/* ── MODAL ── */
+/* ── MODAL —— */
 .overlay{
   position:fixed;inset:0;z-index:200;
   background:rgba(0,0,0,.85);backdrop-filter:blur(10px);
@@ -499,9 +499,9 @@ footer .fp{color:var(--purple2)}
   <div class="hero-glow-r"></div>
   <div class="hero-inner">
 
-    <!-- LEFT: photo + name + quirks -->
     <div class="photo-col">
       <div class="photo-ring">
+        
         <!-- breathing bubbles -->
         <div class="bubbles">
           <div class="bubble"></div>
@@ -555,16 +555,16 @@ footer .fp{color:var(--purple2)}
   <h2 class="section-title reveal">About Me</h2>
   <div class="about-card reveal">
     <p class="about-p">
-      <span class="drop">A</span>ltruistic developer and musician who builds tools for things I actually care about — <span class="hl-orange">emulation, usability, and scratching my own itch</span>. Not a game dev, but I've been deep in the Switch and PPSSPP rabbit hole long enough to start contributing to it.
+      ● Altruistic developer and musician who builds tools for things I actually care about: <span class="hl-orange">emulation, preserving old games, usability</span>, and scratching my own itch. <span class="hl-purple">Not a game dev</span>, but I've been deep in the Switch and PPSSPP rabbit hole long enough to start contributing to it.
     </p>
     <p class="about-p">
-      <span class="drop">M</span>ost of what I build is either solving a problem I ran into personally, or <span class="hl-purple">making life easier for the people around me</span>. If the workflow is a mess, I fix it. If nobody made the tool I need, I make it myself.
+      ● Most of what I build is either solving a problem I ran into personally, or <span class="hl-purple">making life easier for the people around me</span>. If the workflow is a mess, I fix it. If nobody made the tool I need, <span class="hl-orange">I make it myself</span>.
     </p>
     <p class="about-p">
-      <span class="drop">P</span>art of the <span class="hl-orange">Switch Atmosphere/Switchway homebrew scene since 2020</span>, helping people with CFW, hardware repairs, and everything between firmware and soldering chips in and out.
+      ● Part of the <span class="hl-orange">Switch Atmosphere/Switchway homebrew scene</span> since 2020, helping people with CFW, hardware repairs, and everything between firmware and soldering chips in and out.
     </p>
     <p class="about-p" style="margin-bottom:0">
-      <span class="drop">B</span>ased in <span class="hl-purple">Barcelona</span>, building things I actually use, trying to take it one project at a time but I ended up getting involved in more than two or three.
+      ● Based in <span class="hl-purple">Barcelona</span>, building things I actually use, trying to take it one project at a time but I always end up getting involved in <span class="hl-orange"> more than two or three</span>.
     </p>
   </div>
 </div>
