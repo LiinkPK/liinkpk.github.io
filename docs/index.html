@@ -117,7 +117,7 @@ nav{
 .ph-icon{opacity:.2}
 .ph-txt{font-size:.65rem;color:var(--muted);font-weight:500}
 .hero-name{
-  font-size:1.9rem;font-weight:800;color:var(--white);
+  font-size:2.2rem;font-weight:800;color:var(--white);
   letter-spacing:-.02em;text-align:center;
 }
 .hero-quirks{
@@ -136,7 +136,7 @@ nav{
 /* text side */
 .hero-text{}
 .hero-eyebrow{
-  font-size:.85rem;font-weight:400;color:var(--muted2);
+  font-size:.81rem;font-weight:400;color:var(--muted2);
   margin-bottom:.6rem;
   opacity:0;animation:up .5s .1s forwards;
 }
@@ -247,8 +247,8 @@ hr.div{border:none;border-top:1px solid var(--border)}
 }
 /* drop cap */
 .about-p .drop{
-  font-size:1.7rem;font-weight:900;line-height:1;
-  float:left;margin-right:.1rem;margin-top:.1rem;
+  font-size:1.3rem;font-weight:900;line-height:1;
+  float:left;margin-right:.1rem;margin-top:.16rem;
   color:var(--white);
 }
 /* inline highlights */
@@ -310,12 +310,24 @@ hr.div{border:none;border-top:1px solid var(--border)}
 /* brand colours */
 .sp-python{background:#2b5b84}
 .sp-cpp{background:#004482}
+.sp-js{background:#a07800}
+.sp-json{background:#2c2c2e;border-color:#555}
+.sp-css{background:#663399}
 .sp-git{background:#c9300f}
 .sp-vscode{background:#0b74d0}
+.sp-virtualbox{background:#233A51}
+.sp-davinci{background:#c77304}
+.sp-photoshop{background:#00376b}
+.sp-vscode{background:#007a1b}
+.sp-cubase{background:#930d97}
 .sp-github{background:#24292e;border-color:#444}
 .sp-win{background:#0a6eb4}
 .sp-mac{background:#2c2c2e;border-color:#555}
-.sp-android{background:#1f6e30}
+.sp-html{background:#2c2c2e;border-color:#555}
+.sp-android{background:#14b637}
+.sp-linux{background:#d15b01}
+.sp-switch{background:#d10101}
+.sp-xbox{background:#1a8011}
 .sp-emu{background:#7c3aed}
 .sp-tex{background:#b45309}
 .sp-desk{background:#0f766e}
@@ -518,10 +530,10 @@ footer .fp{color:var(--purple2)}
       <span class="drop">M</span>ost of what I build is either solving a problem I ran into personally, or <span class="hl-purple">making life easier for the people around me</span>. If the workflow is a mess, I fix it. If nobody made the tool I need, I make it myself.
     </p>
     <p class="about-p">
-      <span class="drop">P</span>art of the <span class="hl-orange">Switch Atmosphere/Switchway homebrew scene since 2020</span> — helping people with CFW, hardware repairs, and everything between firmware and soldering chips in and out.
+      <span class="drop">P</span>art of the <span class="hl-orange">Switch Atmosphere/Switchway homebrew scene since 2020</span>, helping people with CFW, hardware repairs, and everything between firmware and soldering chips in and out.
     </p>
     <p class="about-p" style="margin-bottom:0">
-      <span class="drop">B</span>ased in <span class="hl-purple">Barcelona</span>, building things I actually use, one project at a time (bust mostly lots at a time).
+      <span class="drop">B</span>ased in <span class="hl-purple">Barcelona</span>, building things I actually use, trying to take it one project at a time but I ended up getting involved in more than two or three.
     </p>
   </div>
 </div>
@@ -535,23 +547,23 @@ footer .fp{color:var(--purple2)}
     <div class="proj-card reveal" onclick="openModal('ppsspp-tool')">
       <p class="proj-org">PPSSPP</p>
       <h3 class="proj-title">Texture Replacement Tool</h3>
-      <p class="proj-desc">A desktop GUI for managing HD texture packs on PPSSPP. The existing workflow was scattered and painful — so I built a proper tool for it.</p>
+      <p class="proj-desc">A desktop GUI for managing HD texture packs on PPSSPP. The existing workflow was scattered and painful, so I built a proper tool for it.</p>
       <span class="proj-more">View full →</span>
     </div>
     <div class="proj-card reveal" onclick="openModal('dissidia')">
-      <p class="proj-org">Final Fantasy</p>
+      <p class="proj-org">Game remaster</p>
       <h3 class="proj-title">Dissidia 012 HD Textures</h3>
-      <p class="proj-desc">High-res texture pack for Dissidia 012 on PPSSPP. Fork of AkiraJkr's work, extended and maintained with community feedback.</p>
+      <p class="proj-desc">High-res texture pack for Dissidia 012 on PPSSPP. Hand-crafted texture replacement project with active community feedback.</p>
       <span class="proj-more">View full →</span>
     </div>
     <div class="proj-card reveal" onclick="openModal('helpme')">
       <p class="proj-org">Home Project</p>
       <h3 class="proj-title">HelpMeKiddo</h3>
-      <p class="proj-desc">One-stop TV app launcher for the living room. Built so my family stops calling me for tech support every time they want to watch something.</p>
+      <p class="proj-desc">One-stop TV app launcher for the living room. Built so my family stops calling me for tech support every time they want update their TV apps.</p>
       <span class="proj-more">View full →</span>
     </div>
     <div class="proj-card reveal" onclick="openModal('ppsspp-fork')">
-      <p class="proj-org">Open Source</p>
+      <p class="proj-org">One-click Dump</p>
       <h3 class="proj-title">PPSSPP Fork</h3>
       <p class="proj-desc">Added "Dump textures from ISO/Folder" to upstream PPSSPP. Small change, significant time saver for texture pack builders.</p>
       <span class="proj-more">View full →</span>
@@ -561,7 +573,7 @@ footer .fp{color:var(--purple2)}
 
 <hr class="div"/>
 
-<!-- SKILLS — Noel's floating vivid pill style, 2-column -->
+<!-- SKILLS -->
 <div class="section-wrap" id="skills">
   <h2 class="section-title reveal">Skills</h2>
   <div class="skills-2col">
@@ -572,38 +584,82 @@ footer .fp{color:var(--purple2)}
         <span class="sp sp-python">
           <img src="https://cdn.simpleicons.org/python/FFD43B" alt="">Python
         </span>
+        <span class="sp sp-html">
+          <img src="https://cdn.simpleicons.org/htmx/E34F26" alt="">HTML
+        </span>
         <span class="sp sp-cpp">
           <img src="https://cdn.simpleicons.org/cplusplus/659AD2" alt="">C++
+        </span>
+        <span class="sp sp-css">
+          <img src="https://cdn.simpleicons.org/css/ffffff" alt="">CSS
+        </span>
+        <span class="sp sp-js">
+          <img src="https://cdn.simpleicons.org/javascript/ffee00" alt="">JavaScript
+        </span>
+        <span class="sp sp-json">
+          <img src="https://cdn.simpleicons.org/json/7c3aed" alt="">JSON
         </span>
       </div>
     </div>
 
     <div class="reveal">
-      <div class="skill-group-title">Tools</div>
-      <div class="skill-pills">
-        <span class="sp sp-git">
-          <img src="https://cdn.simpleicons.org/git/ffffff" alt="">Git
-        </span>
-        <span class="sp sp-vscode">
-          <img src="https://cdn.simpleicons.org/visualstudiocode/ffffff" alt="">VS Code
-        </span>
-        <span class="sp sp-github">
-          <img src="https://cdn.simpleicons.org/github/ffffff" alt="">GitHub
-        </span>
-      </div>
-    </div>
+  <div class="skill-group-title">Tools</div>
+  <div class="skill-pills">
+    <span class="sp sp-git">
+      <img src="https://cdn.simpleicons.org/git/ffffff" alt="">Git
+    </span>
+    <span class="sp sp-vscode">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20" fill="white">
+        <path d="M74.5 5.2L38.1 37.8 15.6 20.9 5.4 26.9v46.2l10.2 6 22.5-16.9 36.4 32.6 10.1-5.4V10.6L74.5 5.2zm0 19.8v50L51.1 50 74.5 25z"/>
+      </svg>
+      VS Code
+    </span>
+    <span class="sp sp-github">
+      <img src="https://cdn.simpleicons.org/github/ffffff" alt="">GitHub
+    </span>
+    <span class="sp sp-virtualbox">
+      <img src="https://cdn.simpleicons.org/VirtualBox/ffffff" alt="">VirtualBox
+    </span>
+    <span class="sp sp-davinci">
+      <img src="https://cdn.simpleicons.org/davinciresolve/ffffff" alt="">Davinci Resolve
+    </span>
+    <span class="sp sp-photoshop">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 234" width="20" height="20" fill="white">
+        <path d="M0 0v234h240V0H0zm164 116.3c-3.7 9.3-10.6 15.7-20.2 18.9-5.8 2-11.8 2.7-17.9 2.7H111v36.4H89.6V63.7H128c6.9 0 13.5.9 19.7 3.5 10.5 4.3 17 12.1 19.4 23.1 1 4.7 1.1 9.4.5 14.2-.5 4.2-1.6 8.2-3.6 11.8zm-53-35.1v39.4h11.8c4.1 0 8-.5 11.6-2.3 5.9-2.9 8.7-7.8 8.8-14.3.1-5.4-1.7-9.8-6.1-12.9-3.8-2.7-8.2-3.6-12.8-3.8-4.5-.2-8.9-.1-13.3-.1z"/>
+      </svg>
+      Photoshop
+    </span>
+    <span class="sp sp-cubase">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="20" height="20" fill="white">
+        <path d="M50 10C27.9 10 10 27.9 10 50s17.9 40 40 40 40-17.9 40-40S72.1 10 50 10zm0 6c18.8 0 34 15.2 34 34S68.8 84 50 84 16 68.8 16 50s15.2-34 34-34zm0 8c-14.4 0-26 11.6-26 26s11.6 26 26 26 26-11.6 26-26-11.6-26-26-26zm0 6c11.1 0 20 8.9 20 20s-8.9 20-20 20-20-8.9-20-20 8.9-20 20-20zm0 8c-6.6 0-12 5.4-12 12s5.4 12 12 12 12-5.4 12-12-5.4-12-12-12z"/>
+    </svg>
+    Cubase
+    </span>
+  </div>
+</div>
 
     <div class="reveal">
       <div class="skill-group-title">Platforms</div>
       <div class="skill-pills">
         <span class="sp sp-win">
-          <img src="https://cdn.simpleicons.org/windows/ffffff" alt="">Windows
-        </span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 88" width="15" height="15" fill="white">
+                <path d="M0 12.402l35.687-4.86.016 34.423-35.67.203zm35.67 33.529.028 34.453L.028 75.48.026 45.7zm4.326-39.025L87.314 0v41.527l-47.318.376zm47.329 39.349-.011 41.34-47.318-6.678-.066-34.739z"/>
+            </svg> Windows
+            </span>
         <span class="sp sp-mac">
           <img src="https://cdn.simpleicons.org/apple/ffffff" alt="">macOS
         </span>
         <span class="sp sp-android">
           <img src="https://cdn.simpleicons.org/android/ffffff" alt="">Android
+        </span>
+        <span class="sp sp-linux">
+          <img src="https://cdn.simpleicons.org/linuxmint/ffffff" alt="">Linux
+        </span>
+        <span class="sp sp-switch">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/nintendoswitch.svg" style="filter: brightness(0) invert(1); width:15px; height:15px;" alt="">Nintendo Switch
+        </span>
+        <span class="sp sp-xbox">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@9/icons/xbox.svg" style="filter: brightness(0) invert(1); width:15px; height:15px;" alt="">Xbox
         </span>
       </div>
     </div>
@@ -613,7 +669,7 @@ footer .fp{color:var(--purple2)}
       <div class="skill-pills">
         <span class="sp sp-emu">Emulation</span>
         <span class="sp sp-tex">Texture Modding</span>
-        <span class="sp sp-desk">Desktop Apps</span>
+        <span class="sp sp-desk">Music Composition</span>
         <span class="sp sp-cfw">Switch CFW</span>
         <span class="sp sp-hw">HW Repair</span>
         <span class="sp sp-oss">Open Source</span>
@@ -634,7 +690,7 @@ footer .fp{color:var(--purple2)}
         <div class="comm-ico ico-discord">💬</div>
         <div><div class="comm-name">Dissidia Discord</div><div class="comm-sub">Community Server</div></div>
       </div>
-      <p class="comm-desc">The Discord server for the Dissidia Final Fantasy community — HD texture discussion, modding help, and project updates.</p>
+      <p class="comm-desc">The official Discord server for the Dissidia 012 HD Remaster community. HD texture discussion, suggestions, feedback, and project updates.</p>
       <a href="https://discord.gg/W9rcyMJ7br" class="comm-link" target="_blank">Join server →</a>
     </div>
     <div class="comm-card reveal">
@@ -642,7 +698,7 @@ footer .fp{color:var(--purple2)}
         <div class="comm-ico ico-reddit">🎨</div>
         <div><div class="comm-name">Dissidia 012 HD Remaster</div><div class="comm-sub">Reddit · r/dissidia</div></div>
       </div>
-      <p class="comm-desc">Original Reddit post announcing the Dissidia 012 HD Remastered texture project — discussion, feedback, and progress updates.</p>
+      <p class="comm-desc">Original Reddit post announcing the Dissidia 012 HD Remastered texture project. Discussion, suggestions and very heart-warming messages.</p>
       <a href="https://www.reddit.com/r/dissidia/comments/1g6peh2/dissidia_012_hd_remastered_wip/" class="comm-link" target="_blank">View post →</a>
     </div>
     <div class="comm-card reveal">
@@ -650,7 +706,7 @@ footer .fp{color:var(--purple2)}
         <div class="comm-ico ico-paypal">💙</div>
         <div><div class="comm-name">Support via PayPal</div><div class="comm-sub">paypal.me/liinkpk</div></div>
       </div>
-      <p class="comm-desc">If any of my projects have been useful to you, a tip is always appreciated and helps keep things going.</p>
+      <p class="comm-desc">If any of my projects have been useful to you, a tip is always appreciated and helps keep things going. Not mandatory, but it is a huge confidence boost.</p>
       <a href="https://paypal.me/liinkpk" class="comm-link" target="_blank">Donate →</a>
     </div>
     <div class="comm-card reveal">
@@ -658,7 +714,7 @@ footer .fp{color:var(--purple2)}
         <div class="comm-ico ico-patreon">🤝</div>
         <div><div class="comm-name">Patreon</div><div class="comm-sub">patreon.com/c/LinkG</div></div>
       </div>
-      <p class="comm-desc">Support ongoing projects and get updates on what I'm working on through Patreon membership.</p>
+      <p class="comm-desc">Support the Dissidia 012 HD Remaster project, get updates on what I'm working on and get a special Discord role through Patreon membership.</p>
       <a href="https://patreon.com/c/LinkG/membership" class="comm-link" target="_blank">Become a member →</a>
     </div>
   </div>
@@ -734,7 +790,7 @@ const obs=new IntersectionObserver(entries=>{
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
 // typewriter in the terminal pill
-const phrases=['Tinkerer','Texture Modder','Homebrew Dev','Open Source','Musician'];
+const phrases=['Tinkerer','Texture Modder','Homebrew Dev','Open Source','Musician', 'Composer'];
 let pi=0,ci=0,del=false;
 const tw=document.getElementById('tw');
 function type(){
