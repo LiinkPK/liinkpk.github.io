@@ -114,6 +114,24 @@ nav{
   object-fit:cover;border-radius:50%;
   display:block;
 }
+/* ── BREATHING BUBBLES (ambient orbs around photo) ── */
+.bubbles{
+  position:absolute;inset:-30px;border-radius:50%;
+  pointer-events:none;z-index:0;
+}
+.bubble{
+  position:absolute;border-radius:50%;
+  background:var(--pink);opacity:0;
+  animation:bubbleFloat 8s ease-in-out infinite;
+}
+.bubble:nth-child(1){width:12px;height:12px;top:10%;left:5%;background:var(--orange);animation-delay:0s;animation-duration:7s}
+.bubble:nth-child(2){width:8px;height:8px;top:5%;left:55%;background:var(--pink);animation-delay:1.2s;animation-duration:9s}
+.bubble:nth-child(3){width:10px;height:10px;top:50%;left:-2%;background:var(--purple);animation-delay:2.4s;animation-duration:8s}
+.bubble:nth-child(4){width:6px;height:6px;top:80%;left:20%;background:var(--orange2);animation-delay:3.6s;animation-duration:10s}
+.bubble:nth-child(5){width:9px;height:9px;top:85%;left:70%;background:var(--purple2);animation-delay:0.8s;animation-duration:7.5s}
+.bubble:nth-child(6){width:7px;height:7px;top:20%;left:92%;background:var(--pink);animation-delay:2s;animation-duration:11s}
+.bubble:nth-child(7){width:11px;height:11px;top:65%;left:95%;background:var(--orange);animation-delay:4s;animation-duration:9.5s}
+
 .ph-icon{opacity:.2}
 .ph-txt{font-size:.65rem;color:var(--muted);font-weight:500}
 .hero-name{
@@ -155,7 +173,7 @@ nav{
   margin-bottom:1.4rem;
   opacity:0;animation:up .5s .26s forwards;
 }
-/* two pill buttons like Noel */
+/* pill buttons */
 .hero-pills{
   display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1.8rem;
   opacity:0;animation:up .5s .32s forwards;
@@ -441,9 +459,12 @@ footer .fp{color:var(--purple2)}
 /* ── KEYFRAMES ── */
 @keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 @keyframes spin{to{transform:rotate(360deg)}}
-@keyframes breathe{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.025)}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
+@keyframes bubbleFloat{
+  0%{opacity:0;transform:translateY(0) scale(1)}
+  20%{opacity:.6}
+  80%{opacity:.4}
+  100%{opacity:0;transform:translateY(-40px) scale(1.3)}
 }
 
 /* ── RESPONSIVE ── */
@@ -481,6 +502,16 @@ footer .fp{color:var(--purple2)}
     <!-- LEFT: photo + name + quirks -->
     <div class="photo-col">
       <div class="photo-ring">
+        <!-- breathing bubbles -->
+        <div class="bubbles">
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+        </div>
         <div class="photo-inner">
           <img id="photo" src="photo-16bit.jpg" alt="Link" style="width:100%;height:100%;object-fit:cover;border-radius:50%;transition:opacity 0.6s ease;">
         </div>
