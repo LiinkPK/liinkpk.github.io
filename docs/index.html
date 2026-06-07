@@ -584,7 +584,7 @@ footer .fp{color:var(--purple2)}
 
 <!-- PROJECTS -->
 <div class="section-wrap" id="projects">
-  <h2 class="section-title reveal">GitHub Projects</h2>
+  <h2 class="section-title reveal">Projects</h2>
   <div class="projects-grid">
     <div class="proj-card reveal" onclick="openModal('ppsspp-tool')">
       <p class="proj-org">PPSSPP</p>
@@ -608,6 +608,12 @@ footer .fp{color:var(--purple2)}
       <p class="proj-org">One-click Dump</p>
       <h3 class="proj-title">PPSSPP Fork</h3>
       <p class="proj-desc">Added "Dump All Textures From ISO/Folder" to upstream PPSSPP. Small change but a significant time saver for texture pack builders.</p>
+      <span class="proj-more">View full →</span>
+    </div>
+    <div class="proj-card reveal" onclick="openModal2('bynoa')">
+      <p class="proj-org">Web Design</p>
+      <h3 class="proj-title">Noa Aguilera's Portfolio</h3>
+      <p class="proj-desc">Website creation for Noa Aguilera, a professional graphic designer. Website with dynamic grids, CTAs and different pages.</p>
       <span class="proj-more">View full →</span>
     </div>
   </div>
@@ -806,7 +812,10 @@ const MODALS={
     tech:['Python','Desktop App','Windows','TV/Media'],link:'https://github.com/LiinkPK/HelpMeKiddo'},
   'ppsspp-fork':{org:'Open Source · PPSSPP',title:'PPSSPP Fork — Dump Textures from ISO',
     body:`<p>A fork of the upstream PPSSPP emulator with one key addition: the ability to dump textures directly from an ISO or folder, without needing to run through the full game to trigger texture loads.</p><p>Small change, significant time saver for building texture packs.</p>`,
-    tech:['C++','PPSSPP','Open Source','Emulation'],link:'https://github.com/LiinkPK/ppsspp'}
+    tech:['C++','PPSSPP','Open Source','Emulation'],link:'https://github.com/LiinkPK/ppsspp'},
+  'bynoa':{org:'Web Design · HTML',title:'',
+    body:`<p>Website creation for Noa Aguilera, a professional graphic designer. Website with dynamic grids, CTAs and different pages.</p><p>Client wanted to migrate from Squarespace and host the website locally.</p>`,
+    tech:['HTML','CSS','Windows','Graphic Design'],link:'https://bynoa.github.io'}
 };
 
 function openModal(id){
@@ -816,6 +825,20 @@ function openModal(id){
     <p class="modal-tech-hd">Tech Used</p>
     <div class="tech-chips">${d.tech.map(t=>`<span class="tc">${t}</span>`).join('')}</div>
     <a href="${d.link}" class="modal-gh" target="_blank">View on GitHub ↗</a>`;
+  document.getElementById('ov').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('ov').classList.remove('open');document.body.style.overflow='';}
+function closeOut(e){if(e.target===document.getElementById('ov'))closeModal();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+function openModal2(id){
+  const d=MODALS[id];
+  document.getElementById('mbody').innerHTML=`
+    <p class="modal-org">${d.org}</p><h3>${d.title}</h3>${d.body}
+    <p class="modal-tech-hd">Tech Used</p>
+    <div class="tech-chips">${d.tech.map(t=>`<span class="tc">${t}</span>`).join('')}</div>
+    <a href="${d.link}" class="modal-gh" target="_blank">View website ↗</a>`;
   document.getElementById('ov').classList.add('open');
   document.body.style.overflow='hidden';
 }
