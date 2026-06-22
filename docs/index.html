@@ -407,6 +407,10 @@ hr.div{border:none;border-top:1px solid var(--border)}
 .cbadge:hover{border-color:var(--pink);color:var(--white);transform:translateY(-2px);box-shadow:0 6px 20px rgba(236,72,153,.25)}
 .cbadge img{width:16px;height:16px}
 
+.contact-toggle-wrap{margin:1.5rem 0 0}
+.contact-toggle{cursor:pointer;border:none;outline:none}
+.contact-toggle:focus{outline:none}
+
 /* ── FOOTER ── */
 footer{
   border-top:1px solid var(--border);
@@ -776,6 +780,40 @@ footer .fp{color:var(--purple2)}
 <!-- CONTACT -->
 <section id="contact">
   <h2 class="section-title reveal">Get In Touch</h2>
+
+  <div class="contact-toggle-wrap reveal">
+    <button class="btn-orange contact-toggle" id="contact-toggle" type="button">Contact Me!</button>
+  </div>
+
+  <div class="contact-dropdown" id="contact-dropdown">
+    <form class="contact-form" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="cf-row">
+        <div class="cf-group">
+          <label for="cf-name">First Name</label>
+          <input type="text" id="cf-name" name="first_name" autocomplete="given-name">
+        </div>
+        <div class="cf-group">
+          <label for="cf-lastname">Last Name</label>
+          <input type="text" id="cf-lastname" name="last_name" autocomplete="family-name">
+        </div>
+      </div>
+      <div class="cf-group">
+        <label for="cf-email">E-mail</label>
+        <input type="email" id="cf-email" name="email" autocomplete="email">
+      </div>
+      <div class="cf-group">
+        <label for="cf-subject">Subject</label>
+        <input type="text" id="cf-subject" name="subject">
+      </div>
+      <div class="cf-group">
+        <label for="cf-message">Message</label>
+        <textarea id="cf-message" name="message" maxlength="2500"></textarea>
+      </div>
+      <button class="cf-send" type="submit" id="cf-send-btn" disabled>Send</button>
+      <p class="cf-status" id="cf-status"></p>
+    </form>
+  </div>
+
   <p class="contact-desc reveal">Open to collaborations, modding questions, or just a chat about emulation and homebrew.</p>
   <div class="contact-links reveal">
     <a href="https://github.com/LiinkPK" class="cbadge" target="_blank"><img src="https://cdn.simpleicons.org/github/ffffff" alt="">GitHub</a>
