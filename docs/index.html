@@ -407,9 +407,46 @@ hr.div{border:none;border-top:1px solid var(--border)}
 .cbadge:hover{border-color:var(--pink);color:var(--white);transform:translateY(-2px);box-shadow:0 6px 20px rgba(236,72,153,.25)}
 .cbadge img{width:16px;height:16px}
 
-.contact-toggle-wrap{margin:1.5rem 0 0}
+/* contact dropdown */
+.contact-toggle-wrap{margin:0 auto 1.75rem;display:flex;justify-content:center;width:100%}
+#contact .section-title{margin-bottom:1rem}
 .contact-toggle{cursor:pointer;border:none;outline:none}
-.contact-toggle:focus{outline:none}
+.contact-toggle:focus{outline:none;box-shadow:0 4px 20px rgba(249,115,22,.35);}
+.contact-dropdown{
+  max-height:0;overflow:hidden;
+  transition:max-height .35s ease, opacity .3s ease;
+  opacity:0;
+}
+.contact-dropdown.open{opacity:1}
+.contact-form{
+  max-width:480px;margin:1rem auto 1.75rem;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;padding:2rem;
+  text-align:left;
+}
+.cf-group{display:flex;flex-direction:column;gap:6px;margin-bottom:1rem}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cf-group label{font-size:.78rem;font-weight:600;color:var(--muted2)}
+.cf-group input,.cf-group textarea{
+  width:100%;padding:.65rem .8rem;
+  font-family:inherit;font-size:.85rem;
+  color:var(--white);background:var(--bg2);
+  border:1px solid var(--border);border-radius:8px;
+  outline:none;transition:border-color .2s;
+}
+.cf-group input:focus,.cf-group textarea:focus{border-color:var(--purple2)}
+.cf-group textarea{resize:vertical;min-height:100px;max-height:500px}
+.cf-send{
+  display:inline-flex;align-items:center;gap:.4rem;
+  padding:.7rem 1.6rem;border-radius:999px;
+  background:linear-gradient(135deg,var(--orange),#f43f5e);
+  color:#fff;font-size:.85rem;font-weight:700;border:none;cursor:pointer;
+  transition:all .22s;width:100%;justify-content:center;
+}
+.cf-send:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 28px rgba(249,115,22,.5)}
+.cf-send:disabled{opacity:.5;cursor:not-allowed}
+.cf-status{font-size:.78rem;color:var(--muted2);text-align:center;margin-top:.75rem;display:none}
+@media (max-width:560px){.cf-row{grid-template-columns:1fr}}
 
 /* ── FOOTER ── */
 footer{
@@ -786,7 +823,7 @@ footer .fp{color:var(--purple2)}
   </div>
 
   <div class="contact-dropdown" id="contact-dropdown">
-    <form class="contact-form" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <form class="contact-form" id="contact-form" action="https://formspree.io/f/xgojeovb" method="POST">
       <div class="cf-row">
         <div class="cf-group">
           <label for="cf-name">First Name</label>
@@ -806,8 +843,8 @@ footer .fp{color:var(--purple2)}
         <input type="text" id="cf-subject" name="subject">
       </div>
       <div class="cf-group">
-        <label for="cf-message">Message</label>
-        <textarea id="cf-message" name="message" maxlength="2500"></textarea>
+        <label for="cf-message">Message <span id="char-count" style="float:right;font-weight:400;color:var(--muted2)">0 / 600</span></label>
+        <textarea id="cf-message" name="message" maxlength="600"></textarea>
       </div>
       <button class="cf-send" type="submit" id="cf-send-btn" disabled>Send</button>
       <p class="cf-status" id="cf-status"></p>
@@ -906,6 +943,67 @@ function type(){
   setTimeout(type,del?40:75);
 }
 setTimeout(type,1000);
+
+// contact dropdown toggle
+const cToggle=document.getElementById('contact-toggle');
+const cDropdown=document.getElementById('contact-dropdown');
+cToggle.addEventListener('click',()=>{
+  const isOpen=cDropdown.classList.toggle('open');
+  cDropdown.style.maxHeight=isOpen?cDropdown.scrollHeight+'px':'0';
+});
+
+new ResizeObserver(()=>{
+  if(cDropdown.classList.contains('open')){
+    cDropdown.style.maxHeight=cDropdown.scrollHeight+'px';
+  }
+}).observe(document.getElementById('cf-message'));
+
+// contact form validation + submit
+const cfFields=['cf-name','cf-lastname','cf-email','cf-subject','cf-message'];
+const cfBtn=document.getElementById('cf-send-btn');
+const cfEmailRegex=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+function cfCheckAll(){
+  const allFilled=cfFields.every(id=>document.getElementById(id).value.trim()!=='');
+  const emailValid=cfEmailRegex.test(document.getElementById('cf-email').value);
+  cfBtn.disabled=!(allFilled&&emailValid);
+}
+cfFields.forEach(id=>document.getElementById(id).addEventListener('input',cfCheckAll));
+document.getElementById('cf-message').addEventListener('input',function(){
+  document.getElementById('char-count').textContent=this.value.length+' / 600';
+  this.style.height='auto';
+  this.style.height=Math.min(this.scrollHeight,600)+'px';
+  if(cDropdown.classList.contains('open')){
+    cDropdown.style.maxHeight=cDropdown.scrollHeight+'px';
+  }
+});
+
+document.getElementById('contact-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  const form=e.target;
+  const status=document.getElementById('cf-status');
+  const data=new FormData(form);
+  cfBtn.disabled=true;
+  fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}})
+    .then(res=>{
+      status.style.display='block';
+      if(res.ok){
+        status.textContent='Thank you for reaching out! I\'ll get back to you soon.';
+        status.style.color='var(--purple2)';
+        form.reset();
+        setTimeout(()=>{cDropdown.classList.remove('open');status.style.display='none';},1800);
+      }else{
+        status.textContent='Something went wrong. Please try again.';
+        status.style.color='var(--orange)';
+        cfBtn.disabled=false;
+      }
+    })
+    .catch(()=>{
+      status.style.display='block';
+      status.textContent='Network error. Please check your connection.';
+      status.style.color='var(--orange)';
+      cfBtn.disabled=false;
+    });
+});
 </script>
 </body>
 </html>
