@@ -998,13 +998,13 @@ document.getElementById('contact-form').addEventListener('submit',function(e){
       if(res.ok){
         status.textContent='Thank you for reaching out! I\'ll get back to you soon.';
         status.style.color='var(--purple2)';
+        setTimeout(()=>{
+        cDropdown.classList.remove('open');
+        cDropdown.style.maxHeight='0';
+        status.style.display='none';
         form.reset();
         document.getElementById('cf-message').style.height='auto';
-        setTimeout(()=>{
-          cDropdown.classList.remove('open');
-          cDropdown.style.maxHeight='0';
-          status.style.display='none';
-        },3000);
+      },3000);
       }else{
         status.textContent='Something went wrong. Please try again.';
         status.style.color='var(--orange)';
