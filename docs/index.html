@@ -990,7 +990,12 @@ document.getElementById('contact-form').addEventListener('submit',function(e){
         status.textContent='Thank you for reaching out! I\'ll get back to you soon.';
         status.style.color='var(--purple2)';
         form.reset();
-        setTimeout(()=>{cDropdown.classList.remove('open');status.style.display='none';},1800);
+        document.getElementById('cf-message').style.height='auto';
+        setTimeout(()=>{
+          cDropdown.classList.remove('open');
+          cDropdown.style.maxHeight='0';
+          status.style.display='none';
+        },3000);
       }else{
         status.textContent='Something went wrong. Please try again.';
         status.style.color='var(--orange)';
