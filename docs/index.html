@@ -657,10 +657,10 @@ footer .fp{color:var(--purple2)}
       <p class="proj-desc">Website creation for Noa Aguilera, a professional graphic designer. Website with dynamic grids, CTAs and different pages.</p>
       <span class="proj-more">View full →</span>
     </div>
-    <div class="proj-card reveal" onclick="openModal2('koroshi')">
-      <p class="proj-org">Internal Retail Tool</p>
-      <h3 class="proj-title">Koröshi Store Map</h3>
-      <p class="proj-desc">Internal store-mapping tool for Koröshi: an interactive map where staff assign products to specific furniture and drawers, synced live across devices.</p>
+    <div class="proj-card reveal" onclick="openModal2('openqr')">
+      <p class="proj-org">Free QR Editor</p>
+      <h3 class="proj-title">OpenQR Studio</h3>
+      <p class="proj-desc">Website to generate fully customizable static QR codes client-side. No redirect servers, paywalls, or limits. 100% free and doesn't require login.</p>
       <span class="proj-more">View full →</span>
 </div>
   </div>
@@ -898,9 +898,9 @@ const MODALS={
   'bynoa':{org:'Web Design · HTML',title:'',
     body:`<p>Website creation for Noa Aguilera, a professional graphic designer. Website with dynamic grids, CTAs and different pages.</p><p>Client wanted to migrate from Squarespace and host the website locally.</p>`,
     tech:['HTML','CSS','Windows','Graphic Design'],link:'https://bynoas.com'},
-  'koroshi':{org:'Internal Tool · Retail Ops',title:'Koröshi Store Map',
-    body:`<p>An internal web app for Koröshi retail staff to map their store's physical layout — tables, clothing racks, and a counter — and assign specific products to each drawer or hanger, so any employee can instantly find where an item is stocked in-store.</p><p>Supports 14 store locations with independent, password-protected data. Integrates directly with the store's Shopify catalog to autocomplete products by SKU, pulling live images and prices. Backed by a Cloudflare Worker and KV store for real-time sync across devices, with offline-first local caching, undo history, and conflict detection when two staff members edit the same store at once.</p>`,
-    tech:['JavaScript','Cloudflare Workers','Shopify API','HTML/CSS'],link:'https://koroshishop.github.io'}
+  'openqr':{org:'QR Generator · Website',title:'OpenQR Studio',
+    body:`<p>A browser-based generator for static QR codes encoded directly on your device. Because data is embedded into the matrix itself, links never expire and require no intermediate tracking servers. Access is completely free, with optional accounts available to sync designs across devices and retain re-editable templates.</p>`,
+    tech:['JavaScript','HTML','Python','CSS'],link:'https://openqrstudio.com'}
 };
 
 function openModal(id){
