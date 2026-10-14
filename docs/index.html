@@ -947,7 +947,7 @@ function openModal3(id){
     <p class="modal-org">${d.org}</p><h3>${d.title}</h3>${d.body}
     <p class="modal-tech-hd">Tech Used</p>
     <div class="tech-chips">${d.tech.map(t=>`<span class="tc">${t}</span>`).join('')}</div>
-    <a href="${d.link1}" class="modal-gh" target="_blank">View project ↗</a>
+    <a href="${d.link1}" class="modal-gh" target="_blank">View on GitHub ↗</a>
     <a href="${d.link2}" class="modal-gh" target="_blank">View progress ↗</a>`;
   document.getElementById('ov').classList.add('open');
   document.body.style.overflow='hidden';
