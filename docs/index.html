@@ -639,11 +639,12 @@ footer .fp{color:var(--purple2)}
       <p class="proj-desc">High-res texture pack for Dissidia 012 on PPSSPP. Hand-crafted texture replacement project with active community feedback.</p>
       <span class="proj-more">View full →</span>
     </div>
-    <div class="proj-card reveal" onclick="openModal('psprecomp-d012')">
+    <div class="proj-card reveal" onclick="openModal3('psprecomp-d012')">
       <p class="proj-org">Reverse Engineering</p>
       <h3 class="proj-title">Dissidia 012 PC Port</h3>
       <p class="proj-desc">A static recompiler for Dissidia 012's PSP binary, translating MIPS machine code to native x86-64 C++ at build time. No emulator required.</p>
-      <span class="proj-more">View full →</span>
+      <span class="proj-more">View project →</span>
+      <span class="proj-more">View progress →</span>
     </div>
     <div class="proj-card reveal" onclick="openModal('helpme')">
       <p class="proj-org">Home Project</p>
@@ -909,7 +910,7 @@ const MODALS={
     tech:['JavaScript','HTML/CSS','OAuth','Cloudflare'],link:'https://openqrstudio.com'},
   'psprecomp-d012':{org:'Reverse Engineering · PSP Game',title:'Dissidia 012 PC Port',
     body:`<p>A static recompiler for Dissidia 012's PSP binary, converting MIPS machine code to native x86-64 C++ at build time. Because execution runs directly on the host CPU, no emulator is needed and playback never depends on an interpreter or JIT engine. Development is completely open, with reversing done through the recompiled output itself, tracing register states, memory layouts, and call chains to reconstruct the original engine's asset pipeline piece by piece.</p>`,
-    tech:['Ghidra','C++','C#','MIPS'],link:'https://linkgarcia.com/PSPRecomp-d012/'}
+    tech:['Ghidra','C++','C#','MIPS'],link1:'https://github.com/LiinkPK/PSPRecomp-d012',link2:'https://linkgarcia.com/PSPRecomp-d012/'}
 };
 
 function openModal(id){
@@ -933,6 +934,21 @@ function openModal2(id){
     <p class="modal-tech-hd">Tech Used</p>
     <div class="tech-chips">${d.tech.map(t=>`<span class="tc">${t}</span>`).join('')}</div>
     <a href="${d.link}" class="modal-gh" target="_blank">View website ↗</a>`;
+  document.getElementById('ov').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('ov').classList.remove('open');document.body.style.overflow='';}
+function closeOut(e){if(e.target===document.getElementById('ov'))closeModal();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+function openModal3(id){
+  const d=MODALS[id];
+  document.getElementById('mbody').innerHTML=`
+    <p class="modal-org">${d.org}</p><h3>${d.title}</h3>${d.body}
+    <p class="modal-tech-hd">Tech Used</p>
+    <div class="tech-chips">${d.tech.map(t=>`<span class="tc">${t}</span>`).join('')}</div>
+    <a href="${d.link1}" class="modal-gh" target="_blank">View project ↗</a>
+    <a href="${d.link2}" class="modal-gh" target="_blank">View progress ↗</a>`;
   document.getElementById('ov').classList.add('open');
   document.body.style.overflow='hidden';
 }
