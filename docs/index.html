@@ -911,7 +911,6 @@ const MODALS={
     body:`<p>A static recompiler for Dissidia 012's PSP binary, converting MIPS machine code to native x86-64 C++ at build time. No emulator is needed.</p><p>Development is completely open, with reversing done through the recompiled output itself, tracing register states, memory layouts, and call chains to reconstruct the original engine.</p>`,
     tech:['Ghidra','C++','C#','MIPS'],link1:'https://github.com/LiinkPK/PSPRecomp-d012',link2:'https://linkgarcia.com/PSPRecomp-d012/'}
 };
-
 function openModal(id){
   const d=MODALS[id];
   document.getElementById('mbody').innerHTML=`
