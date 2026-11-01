@@ -1,1055 +1,1943 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Link García - Software Engineer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-<link rel="icon" type="image/x-icon" href="favicon2.png">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#0d0d14;
-  --bg2:#12121c;
-  --card:#161622;
-  --border:#252535;
-  --orange:#f97316;
-  --orange2:#fb923c;
-  --pink:#ec4899;
-  --purple:#a855f7;
-  --purple2:#c084fc;
-  --white:#f1f5f9;
-  --text:#cbd5e1;
-  --muted:#64748b;
-  --muted2:#94a3b8;
-}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
-::selection{background:rgba(168,85,247,.35);color:#fff}
-a{text-decoration:none}
-::-webkit-scrollbar{width:5px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:#252535;border-radius:3px}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Link García - Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="favicon2.png">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
-/* ── NAV ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 3rem;height:62px;
-  background:rgba(13,13,20,.9);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--border);
-}
-.nav-brand{
-  font-size:.95rem;font-weight:800;letter-spacing:-.01em;
-  color:var(--white);
-}
-.nav-brand em{color:var(--muted);font-style:normal}
-.nav-links{display:flex;gap:2.2rem;list-style:none}
-.nav-links a{
-  font-size:.85rem;font-weight:500;color:var(--muted2);
-  transition:color .2s;
-}
-.nav-links a:hover{color:var(--white)}
+    :root {
+      --bg: #0d0d14;
+      --bg2: #12121c;
+      --card: #161622;
+      --border: #252535;
+      --orange: #f97316;
+      --orange2: #fb923c;
+      --pink: #ec4899;
+      --purple: #a855f7;
+      --purple2: #c084fc;
+      --white: #f1f5f9;
+      --text: #cbd5e1;
+      --muted: #64748b;
+      --muted2: #94a3b8;
+    }
 
-/* ── HERO ── */
-#hero{
-  min-height:100vh;
-  display:flex;align-items:center;justify-content:center;
-  padding:80px 3rem 3rem;
-  position:relative;overflow:hidden;
-}
-.hero-glow-l{
-  position:absolute;top:20%;left:-10%;
-  width:500px;height:500px;
-  background:radial-gradient(circle,rgba(168,85,247,.09) 0%,transparent 65%);
-  pointer-events:none;
-}
-.hero-glow-r{
-  position:absolute;bottom:10%;right:-5%;
-  width:400px;height:400px;
-  background:radial-gradient(circle,rgba(249,115,22,.07) 0%,transparent 65%);
-  pointer-events:none;
-}
-.hero-inner{
-  max-width:1050px;width:100%;
-  display:grid;grid-template-columns:360px 1fr;gap:5rem;align-items:center;
-  position:relative;z-index:1;
-  margin:0 auto;
-}
+    html {
+      scroll-behavior: smooth
+    }
 
-/* photo side */
-.photo-col{
-  display:flex;flex-direction:column;align-items:center;gap:1.2rem;
-}
-/* breathing ring */
-.photo-ring{
-  position:relative;
-  width:300px;height:300px;
-  border-radius:50%;
-  flex-shrink:0;
-}
-.photo-ring::before{
-  content:'';
-  position:absolute;inset:-3px;border-radius:50%;
-  background:conic-gradient(var(--orange),var(--pink),var(--purple),var(--orange));
-  animation:spin 6s linear infinite;
-}
-.photo-ring::after{
-  content:'';
-  position:absolute;inset:2px;border-radius:50%;
-  background:var(--bg);
-}
-.photo-inner{
-  position:absolute;inset:6px;border-radius:50%;
-  background:var(--card);
-  overflow:hidden;z-index:1;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:.5rem;
-  /* breathing pulse */
-  animation:breathe 4s ease-in-out infinite;
-}
-.photo-inner img{
-  width:100%;height:100%;
-  object-fit:cover;border-radius:50%;
-  display:block;
-}
-/* ── BREATHING BUBBLES ── */
-.bubbles{
-  position:absolute;inset:-30px;border-radius:50%;
-  pointer-events:none;z-index:0;
-}
-.bubble{
-  position:absolute;border-radius:50%;
-  background:var(--pink);opacity:0;
-  animation:bubbleFloat 8s ease-in-out infinite;
-}
-.bubble:nth-child(1){width:12px;height:12px;top:10%;left:5%;background:var(--orange);animation-delay:0s;animation-duration:7s}
-.bubble:nth-child(2){width:8px;height:8px;top:5%;left:55%;background:var(--pink);animation-delay:1.2s;animation-duration:9s}
-.bubble:nth-child(3){width:10px;height:10px;top:50%;left:-2%;background:var(--purple);animation-delay:2.4s;animation-duration:8s}
-.bubble:nth-child(4){width:6px;height:6px;top:80%;left:20%;background:var(--orange2);animation-delay:3.6s;animation-duration:10s}
-.bubble:nth-child(5){width:9px;height:9px;top:85%;left:70%;background:var(--purple2);animation-delay:0.8s;animation-duration:7.5s}
-.bubble:nth-child(6){width:7px;height:7px;top:20%;left:92%;background:var(--pink);animation-delay:2s;animation-duration:11s}
-.bubble:nth-child(7){width:11px;height:11px;top:65%;left:95%;background:var(--orange);animation-delay:4s;animation-duration:9.5s}
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden
+    }
 
-.ph-icon{opacity:.2}
-.ph-txt{font-size:.65rem;color:var(--muted);font-weight:500}
-.hero-name{
-  font-size:2.2rem;font-weight:800;color:var(--white);
-  letter-spacing:-.02em;text-align:center;
-}
-.hero-quirks{
-  display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem .9rem;
-  max-width:280px;
-}
-.quirk{
-  font-size:.75rem;font-weight:500;
-}
-.quirk:nth-child(1){color:var(--pink)}
-.quirk:nth-child(2){color:var(--purple2)}
-.quirk:nth-child(3){color:var(--orange)}
-.quirk:nth-child(4){color:var(--pink)}
-.quirk:nth-child(5){color:var(--purple2)}
+    ::selection {
+      background: rgba(168, 85, 247, .35);
+      color: #fff
+    }
 
-/* text side */
-.hero-text{}
-.hero-eyebrow{
-  font-size:.77rem;font-weight:800;color:var(--muted2);
-  margin-bottom:.6rem;
-  opacity:0;animation:up .5s .1s forwards;
-}
-.hero-quote{
-  font-size:1.65rem;font-weight:800;
-  background:linear-gradient(135deg,var(--orange),var(--pink),var(--purple2));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  margin-bottom:.3rem;
-  opacity:0;animation:up .5s .18s forwards;
-}
-.hero-title{
-  font-size:clamp(2.2rem,4.2vw,4rem);
-  font-weight:900;color:var(--white);
-  letter-spacing:-.03em;line-height:1.0;
-  white-space:nowrap;
-  margin-bottom:1.4rem;
-  opacity:0;animation:up .5s .26s forwards;
-}
-/* pill buttons */
-.hero-pills{
-  display:flex;
-  gap:.75rem;
-  flex-wrap:nowrap;
-  margin-bottom:1.8rem;
-  opacity:0;
-  animation:up .5s .32s forwards;
-  align-items:center;
-}
-.pill-static{
-  display:inline-flex;align-items:center;gap:.5rem;
-  padding:.55rem 1.3rem;border-radius:999px;
-  font-size:.82rem;font-weight:600;letter-spacing:.01em;
-}
-.pill-orange{
-  background:var(--orange);color:#fff;
-}
-.pill-terminal{
-  background:var(--card);color:var(--purple2);
-  border:1px solid var(--border);
-  font-family:'Courier New',monospace;
-}
-.pill-terminal span{color:var(--orange);margin-right:.25rem}
-/* stat */
-.hero-stat{
-  margin-bottom:2rem;
-  opacity:0;animation:up .5s .38s forwards;
-}
-.stat-big{
-  font-size:3rem;font-weight:900;
-  background:linear-gradient(135deg,var(--pink),var(--purple));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  line-height:1;
-}
-.stat-label{font-size:.82rem;color:var(--muted2);margin-top:.2rem}
-/* cta */
-.hero-ctas{
-  display:flex;gap:.75rem;flex-wrap:wrap;
-  opacity:0;animation:up .5s .44s forwards;
-}
-.btn-orange{
-  display:inline-flex;align-items:center;gap:.4rem;
-  padding:.75rem 1.8rem;border-radius:999px;
-  background:linear-gradient(135deg,var(--orange),#f43f5e);
-  color:#fff;font-size:.88rem;font-weight:700;
-  transition:all .22s;
-  box-shadow:0 4px 20px rgba(249,115,22,.35);
-}
-.btn-orange:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(249,115,22,.5);color:#fff}
-.btn-dark{
-  display:inline-flex;align-items:center;gap:.4rem;
-  padding:.75rem 1.8rem;border-radius:999px;
-  background:var(--card);color:var(--white);
-  border:1px solid var(--border);
-  font-size:.88rem;font-weight:600;
-  transition:all .22s;
-}
-.btn-dark:hover{border-color:var(--purple2);color:var(--purple2);transform:translateY(-2px)}
+    a {
+      text-decoration: none
+    }
 
-/* ── SECTIONS ── */
-.section-wrap{
-  max-width:1050px;margin:0 auto;
-  padding:5.5rem 3rem;
-}
-.section-title{
-  font-size:clamp(2rem,4vw,2.8rem);font-weight:900;
-  color:var(--white);letter-spacing:-.03em;
-  text-align:center;margin-bottom:3rem;
-}
-hr.div{border:none;border-top:1px solid var(--border)}
+    ::-webkit-scrollbar {
+      width: 5px
+    }
 
-/* ── ABOUT ── */
-.about-card{
-  max-width:860px;margin:0 auto;
-  background:var(--card);
-  border-radius:14px;
-  padding:2.8rem 3rem;
-  position:relative;
-}
-/* glowing border */
-.about-card::before{
-  content:'';position:absolute;inset:-1.5px;border-radius:15px;
-  background:linear-gradient(135deg,var(--pink),var(--purple),var(--orange));
-  z-index:-1;
-}
-.about-card::after{
-  content:'';position:absolute;inset:0;border-radius:14px;
-  background:var(--card);z-index:-1;
-}
-.about-p{
-  font-size:1rem;color:var(--text);
-  margin-bottom:1.2rem;line-height:1.85;
-  position:relative;z-index:1;
-}
-/* drop cap */
-.about-p .drop{
-  font-size:1.3rem;font-weight:900;line-height:1;
-  float:left;margin-right:.1rem;margin-top:.16rem;
-  color:var(--white);
-}
-/* inline highlights */
-.hl-orange{
-  background:linear-gradient(135deg,var(--orange),#f43f5e);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  font-weight:600;
-}
-.hl-purple{
-  background:linear-gradient(135deg,var(--purple),var(--pink));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  font-weight:600;
-}
+    ::-webkit-scrollbar-track {
+      background: var(--bg)
+    }
 
-/* ── PROJECTS ── */
-.projects-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:1.25rem;
-}
-.proj-card{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:12px;padding:1.6rem;
-  cursor:pointer;transition:all .22s;position:relative;overflow:hidden;
-}
-.proj-card::after{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--orange),var(--pink),var(--purple));
-  transform:scaleX(0);transform-origin:left;transition:transform .25s;
-}
-.proj-card:hover{transform:translateY(-4px);border-color:rgba(236,72,153,.25);box-shadow:0 12px 36px rgba(0,0,0,.6)}
-.proj-card:hover::after{transform:scaleX(1)}
-.proj-org{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:.4rem}
-.proj-title{font-size:1.02rem;font-weight:700;color:var(--white);margin-bottom:.6rem}
-.proj-desc{font-size:.84rem;color:var(--muted2);line-height:1.62;margin-bottom:1rem}
-.proj-more{font-size:.78rem;color:var(--pink);display:inline-flex;align-items:center;gap:.3rem;transition:gap .18s}
-.proj-card:hover .proj-more{gap:.55rem}
+    ::-webkit-scrollbar-thumb {
+      background: #252535;
+      border-radius: 3px
+    }
 
-/* ── SKILLS — */
-.skills-2col{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:3rem 4rem;
-}
-.skill-group-title{
-  font-size:1.1rem;font-weight:800;color:var(--white);
-  letter-spacing:-.01em;margin-bottom:1.1rem;
-}
-.skill-pills{display:flex;flex-wrap:wrap;gap:.5rem}
-/* brand bg */
-.sp{
-  display:inline-flex;align-items:center;gap:.4rem;
-  padding:.42rem .85rem;
-  border-radius:8px;
-  font-size:.8rem;font-weight:600;color:#fff;
-  border:1px solid rgba(255,255,255,.08);
-  transition:transform .18s,filter .18s;
-}
-.sp:hover{transform:translateY(-2px);filter:brightness(1.15)}
-.sp img{width:17px;height:17px;object-fit:contain;flex-shrink:0}
-/* brand colours */
-.sp-python{background:#2b5b84}
-.sp-cpp{background:#004482}
-.sp-js{background:#b45309}
-.sp-json{background:#2c2c2e;border-color:#555}
-.sp-css{background:#663399}
-.sp-git{background:#c9300f}
-.sp-vscode{background:#0b74d0}
-.sp-virtualbox{background:#233A51}
-.sp-davinci{background:#c77304}
-.sp-photoshop{background:#00376b}
-.sp-vscode{background:#007a1b}
-.sp-cubase{background:#930d97}
-.sp-github{background:#24292e;border-color:#444}
-.sp-win{background:#0a6eb4}
-.sp-mac{background:#2c2c2e;border-color:#555}
-.sp-html{background:#2c2c2e;border-color:#555}
-.sp-android{background:#14b637}
-.sp-linux{background:#d15b01}
-.sp-switch{background:#d10101}
-.sp-xbox{background:#1a8011}
-.sp-emu{background:#7c3aed}
-.sp-tex{background:#b45309}
-.sp-desk{background:#0f766e}
-.sp-cfw{background:#be185d}
-.sp-hw{background:#374151}
-.sp-oss{background:#065f46}
-/* domain pills */
-.sp-plain{
-  background:var(--card);color:var(--muted2);
-  border:1px solid var(--border);font-weight:500;
-}
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3rem;
+      height: 62px;
+      background: rgba(13, 13, 20, .9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
 
-/* ── COMMUNITY ── */
-.comm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem}
-.comm-card{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:12px;padding:1.5rem;transition:all .22s;
-}
-.comm-card:hover{transform:translateY(-3px);border-color:rgba(236,72,153,.3)}
-.comm-head{display:flex;align-items:center;gap:.8rem;margin-bottom:.8rem}
-.comm-ico{
-  width:40px;height:40px;border-radius:9px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.15rem;flex-shrink:0;
-}
-.ico-discord{background:rgba(88,101,242,.25);border:1px solid rgba(88,101,242,.4)}
-.ico-reddit{background:rgba(255,69,0,.2);border:1px solid rgba(255,69,0,.35)}
-.ico-paypal{background:rgba(0,100,240,.2);border:1px solid rgba(0,100,240,.3)}
-.ico-patreon{background:rgba(255,66,77,.2);border:1px solid rgba(255,66,77,.3)}
-.comm-name{font-size:.92rem;font-weight:700;color:var(--white)}
-.comm-sub{font-size:.68rem;color:var(--muted);margin-top:.1rem}
-.comm-desc{font-size:.83rem;color:var(--muted2);line-height:1.62;margin-bottom:.9rem}
-.comm-link{
-  font-size:.78rem;font-weight:600;
-  background:linear-gradient(135deg,var(--pink),var(--purple));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  display:inline-flex;align-items:center;gap:.3rem;
-  transition:gap .18s;
-}
-.comm-link:hover{gap:.55rem}
+    .nav-brand {
+      font-size: .95rem;
+      font-weight: 800;
+      letter-spacing: -.01em;
+      color: var(--white);
+    }
 
-/* ── CONTACT ── */
-#contact{text-align:center;padding:5rem 3rem}
-.contact-desc{color:var(--muted2);margin-bottom:2rem;font-size:.93rem}
-.contact-links{display:flex;justify-content:center;flex-wrap:wrap;gap:.75rem}
-.cbadge{
-  display:inline-flex;align-items:center;gap:.45rem;
-  padding:.6rem 1.25rem;border-radius:999px;
-  border:1px solid var(--border);background:var(--card);
-  font-size:.8rem;font-weight:600;color:var(--text);
-  transition:all .2s;
-}
-.cbadge:hover{border-color:var(--pink);color:var(--white);transform:translateY(-2px);box-shadow:0 6px 20px rgba(236,72,153,.25)}
-.cbadge img{width:16px;height:16px}
+    .nav-brand em {
+      color: var(--muted);
+      font-style: normal
+    }
 
-/* contact dropdown */
-.contact-toggle-wrap{margin:0 auto 1.75rem;display:flex;justify-content:center;width:100%}
-#contact .section-title{margin-bottom:1rem}
-.contact-toggle{cursor:pointer;border:none;outline:none}
-.contact-toggle:focus{outline:none;box-shadow:0 4px 20px rgba(249,115,22,.35);}
-.contact-dropdown{
-  max-height:0;overflow:hidden;
-  transition:max-height .35s ease, opacity .3s ease;
-  opacity:0;
-}
-.contact-dropdown.open{opacity:1}
-.contact-form{
-  max-width:480px;margin:1rem auto 1.75rem;
-  background:var(--card);border:1px solid var(--border);
-  border-radius:16px;padding:2rem;
-  text-align:left;
-}
-.cf-group{display:flex;flex-direction:column;gap:6px;margin-bottom:1rem}
-.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.cf-group label{font-size:.78rem;font-weight:600;color:var(--muted2)}
-.cf-group input,.cf-group textarea{
-  width:100%;padding:.65rem .8rem;
-  font-family:inherit;font-size:.85rem;
-  color:var(--white);background:var(--bg2);
-  border:1px solid var(--border);border-radius:8px;
-  outline:none;transition:border-color .2s;
-}
-.cf-group input:focus,.cf-group textarea:focus{border-color:var(--purple2)}
-.cf-group textarea{resize:vertical;min-height:100px;max-height:500px}
-.cf-send{
-  display:inline-flex;align-items:center;gap:.4rem;
-  padding:.7rem 1.6rem;border-radius:999px;
-  background:linear-gradient(135deg,var(--orange),#f43f5e);
-  color:#fff;font-size:.85rem;font-weight:700;border:none;cursor:pointer;
-  transition:all .22s;width:100%;justify-content:center;
-}
-.cf-send:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 28px rgba(249,115,22,.5)}
-.cf-send:disabled{opacity:.5;cursor:not-allowed}
-.cf-status{font-size:.78rem;color:var(--muted2);text-align:center;margin-top:.75rem;display:none}
-@media (max-width:560px){.cf-row{grid-template-columns:1fr}}
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none
+    }
 
-/* ── FOOTER ── */
-footer{
-  border-top:1px solid var(--border);
-  padding:1.5rem;text-align:center;
-  font-size:.75rem;color:var(--muted);
-}
-footer .fo{color:var(--orange)}
-footer .fp{color:var(--purple2)}
+    .nav-links a {
+      font-size: .85rem;
+      font-weight: 500;
+      color: var(--muted2);
+      transition: color .2s;
+    }
 
-/* ── MODAL —— */
-.overlay{
-  position:fixed;inset:0;z-index:200;
-  background:rgba(0,0,0,.85);backdrop-filter:blur(10px);
-  display:flex;align-items:center;justify-content:center;padding:2rem;
-  opacity:0;pointer-events:none;transition:opacity .25s;
-}
-.overlay.open{opacity:1;pointer-events:all}
-.modal{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:16px;padding:2.5rem;
-  max-width:580px;width:100%;max-height:82vh;overflow-y:auto;
-  position:relative;
-  transform:translateY(18px);transition:transform .25s;
-}
-.overlay.open .modal{transform:none}
-.modal-x{
-  position:absolute;top:1rem;right:1rem;
-  width:30px;height:30px;border-radius:6px;
-  background:var(--bg2);border:1px solid var(--border);
-  color:var(--muted);font-size:.85rem;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  transition:all .18s;
-}
-.modal-x:hover{color:#fff;border-color:var(--pink)}
-.modal-org{font-size:.68rem;font-weight:700;color:var(--orange);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.4rem}
-.modal h3{font-size:1.25rem;font-weight:800;color:var(--white);margin-bottom:1rem}
-.modal p{font-size:.88rem;color:var(--muted2);margin-bottom:.8rem;line-height:1.75}
-.modal-tech-hd{font-size:.65rem;font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin:1.2rem 0 .5rem}
-.tech-chips{display:flex;flex-wrap:wrap;gap:.4rem}
-.tc{
-  background:var(--bg);border:1px solid var(--border);
-  border-radius:5px;padding:.22rem .6rem;
-  font-size:.73rem;color:var(--purple2);font-weight:600;
-}
-.modal-gh{
-  display:inline-flex;align-items:center;gap:.4rem;
-  margin-top:1.1rem;font-size:.82rem;font-weight:700;
-  background:linear-gradient(135deg,var(--orange),var(--pink));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-}
+    .nav-links a:hover {
+      color: var(--white)
+    }
 
-/* ── REVEAL ── */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .55s ease,transform .55s ease}
-.reveal.on{opacity:1;transform:none}
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 3rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
 
-/* ── KEYFRAMES ── */
-@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
-@keyframes bubbleFloat{
-  0%{opacity:0;transform:translateY(0) scale(1)}
-  20%{opacity:.6}
-  80%{opacity:.4}
-  100%{opacity:0;transform:translateY(-40px) scale(1.3)}
-}
+    .hero-glow-l {
+      position: absolute;
+      top: 20%;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(168, 85, 247, .09) 0%, transparent 65%);
+      pointer-events: none;
+    }
 
-/* ── RESPONSIVE ── */
-@media(max-width:800px){
-  .nav-brand{ display:none; }
-  nav{ height:44px; padding:0 1.2rem; }
-  .nav-links{ gap:0.8rem 1.2rem; }
-  .nav-links a{ font-size:.78rem; }
-  .hero-inner{ grid-template-columns:1fr; text-align:center; gap:1.5rem; }
-  .photo-col{ margin:0 auto; }
-  .photo-ring{ width:220px; height:220px; }
-  .hero-pills{ flex-direction:column; align-items:center; }
-  .hero-ctas{ justify-content:center; }
-  .skills-2col{ grid-template-columns:1fr; gap:2rem; }
-  .section-wrap{ padding:4rem 1.5rem; }
-  .hero-title{ white-space:normal; font-size:clamp(2rem,8vw,3rem); }
-}
-</style>
+    .hero-glow-r {
+      position: absolute;
+      bottom: 10%;
+      right: -5%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(249, 115, 22, .07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1050px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 5rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      margin: 0 auto;
+    }
+
+    /* photo side */
+    .photo-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    /* breathing ring */
+    .photo-ring {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .photo-ring::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: conic-gradient(var(--orange), var(--pink), var(--purple), var(--orange));
+      animation: spin 6s linear infinite;
+    }
+
+    .photo-ring::after {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      border-radius: 50%;
+      background: var(--bg);
+    }
+
+    .photo-inner {
+      position: absolute;
+      inset: 6px;
+      border-radius: 50%;
+      background: var(--card);
+      overflow: hidden;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      /* breathing pulse */
+      animation: breathe 4s ease-in-out infinite;
+    }
+
+    .photo-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+    }
+
+    /* ── BREATHING BUBBLES ── */
+    .bubbles {
+      position: absolute;
+      inset: -30px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--pink);
+      opacity: 0;
+      animation: bubbleFloat 8s ease-in-out infinite;
+    }
+
+    .bubble:nth-child(1) {
+      width: 12px;
+      height: 12px;
+      top: 10%;
+      left: 5%;
+      background: var(--orange);
+      animation-delay: 0s;
+      animation-duration: 7s
+    }
+
+    .bubble:nth-child(2) {
+      width: 8px;
+      height: 8px;
+      top: 5%;
+      left: 55%;
+      background: var(--pink);
+      animation-delay: 1.2s;
+      animation-duration: 9s
+    }
+
+    .bubble:nth-child(3) {
+      width: 10px;
+      height: 10px;
+      top: 50%;
+      left: -2%;
+      background: var(--purple);
+      animation-delay: 2.4s;
+      animation-duration: 8s
+    }
+
+    .bubble:nth-child(4) {
+      width: 6px;
+      height: 6px;
+      top: 80%;
+      left: 20%;
+      background: var(--orange2);
+      animation-delay: 3.6s;
+      animation-duration: 10s
+    }
+
+    .bubble:nth-child(5) {
+      width: 9px;
+      height: 9px;
+      top: 85%;
+      left: 70%;
+      background: var(--purple2);
+      animation-delay: 0.8s;
+      animation-duration: 7.5s
+    }
+
+    .bubble:nth-child(6) {
+      width: 7px;
+      height: 7px;
+      top: 20%;
+      left: 92%;
+      background: var(--pink);
+      animation-delay: 2s;
+      animation-duration: 11s
+    }
+
+    .bubble:nth-child(7) {
+      width: 11px;
+      height: 11px;
+      top: 65%;
+      left: 95%;
+      background: var(--orange);
+      animation-delay: 4s;
+      animation-duration: 9.5s
+    }
+
+    .ph-icon {
+      opacity: .2
+    }
+
+    .ph-txt {
+      font-size: .65rem;
+      color: var(--muted);
+      font-weight: 500
+    }
+
+    .hero-name {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -.02em;
+      text-align: center;
+    }
+
+    .hero-quirks {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .5rem .9rem;
+      max-width: 280px;
+    }
+
+    .quirk {
+      font-size: .75rem;
+      font-weight: 500;
+    }
+
+    .quirk:nth-child(1) {
+      color: var(--pink)
+    }
+
+    .quirk:nth-child(2) {
+      color: var(--purple2)
+    }
+
+    .quirk:nth-child(3) {
+      color: var(--orange)
+    }
+
+    .quirk:nth-child(4) {
+      color: var(--pink)
+    }
+
+    .quirk:nth-child(5) {
+      color: var(--purple2)
+    }
+
+    /* text side */
+    .hero-text {}
+
+    .hero-eyebrow {
+      font-size: .77rem;
+      font-weight: 800;
+      color: var(--muted2);
+      margin-bottom: .6rem;
+      opacity: 0;
+      animation: up .5s .1s forwards;
+    }
+
+    .hero-quote {
+      font-size: 1.65rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--orange), var(--pink), var(--purple2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: .3rem;
+      opacity: 0;
+      animation: up .5s .18s forwards;
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 4.2vw, 4rem);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -.03em;
+      line-height: 1.0;
+      white-space: nowrap;
+      margin-bottom: 1.4rem;
+      opacity: 0;
+      animation: up .5s .26s forwards;
+    }
+
+    /* pill buttons */
+    .hero-pills {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: nowrap;
+      margin-bottom: 1.8rem;
+      opacity: 0;
+      animation: up .5s .32s forwards;
+      align-items: center;
+    }
+
+    .pill-static {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .55rem 1.3rem;
+      border-radius: 999px;
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .01em;
+    }
+
+    .pill-orange {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .pill-terminal {
+      background: var(--card);
+      color: var(--purple2);
+      border: 1px solid var(--border);
+      font-family: 'Courier New', monospace;
+    }
+
+    .pill-terminal span {
+      color: var(--orange);
+      margin-right: .25rem
+    }
+
+    /* stat */
+    .hero-stat {
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: up .5s .38s forwards;
+    }
+
+    .stat-big {
+      font-size: 3rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: .82rem;
+      color: var(--muted2);
+      margin-top: .2rem
+    }
+
+    /* cta */
+    .hero-ctas {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: up .5s .44s forwards;
+    }
+
+    .btn-orange {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .75rem 1.8rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--orange), #f43f5e);
+      color: #fff;
+      font-size: .88rem;
+      font-weight: 700;
+      transition: all .22s;
+      box-shadow: 0 4px 20px rgba(249, 115, 22, .35);
+    }
+
+    .btn-orange:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(249, 115, 22, .5);
+      color: #fff
+    }
+
+    .btn-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .75rem 1.8rem;
+      border-radius: 999px;
+      background: var(--card);
+      color: var(--white);
+      border: 1px solid var(--border);
+      font-size: .88rem;
+      font-weight: 600;
+      transition: all .22s;
+    }
+
+    .btn-dark:hover {
+      border-color: var(--purple2);
+      color: var(--purple2);
+      transform: translateY(-2px)
+    }
+
+    /* ── SECTIONS ── */
+    .section-wrap {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 5.5rem 3rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -.03em;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    hr.div {
+      border: none;
+      border-top: 1px solid var(--border)
+    }
+
+    /* ── ABOUT ── */
+    .about-card {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--card);
+      border-radius: 14px;
+      padding: 2.8rem 3rem;
+      position: relative;
+    }
+
+    /* glowing border */
+    .about-card::before {
+      content: '';
+      position: absolute;
+      inset: -1.5px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, var(--pink), var(--purple), var(--orange));
+      z-index: -1;
+    }
+
+    .about-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      background: var(--card);
+      z-index: -1;
+    }
+
+    .about-p {
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 1.2rem;
+      line-height: 1.85;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* drop cap */
+    .about-p .drop {
+      font-size: 1.3rem;
+      font-weight: 900;
+      line-height: 1;
+      float: left;
+      margin-right: .1rem;
+      margin-top: .16rem;
+      color: var(--white);
+    }
+
+    /* inline highlights */
+    .hl-orange {
+      background: linear-gradient(135deg, var(--orange), #f43f5e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 600;
+    }
+
+    .hl-purple {
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 600;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .proj-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.6rem;
+      cursor: pointer;
+      transition: all .22s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .proj-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--orange), var(--pink), var(--purple));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .25s;
+    }
+
+    .proj-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(236, 72, 153, .25);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, .6)
+    }
+
+    .proj-card:hover::after {
+      transform: scaleX(1)
+    }
+
+    .proj-org {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: .4rem
+    }
+
+    .proj-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: .6rem
+    }
+
+    .proj-desc {
+      font-size: .84rem;
+      color: var(--muted2);
+      line-height: 1.62;
+      margin-bottom: 1rem
+    }
+
+    .proj-more {
+      font-size: .78rem;
+      color: var(--pink);
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      transition: gap .18s
+    }
+
+    .proj-card:hover .proj-more {
+      gap: .55rem
+    }
+
+    /* ── SKILLS — */
+    .skills-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem 4rem;
+    }
+
+    .skill-group-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -.01em;
+      margin-bottom: 1.1rem;
+    }
+
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem
+    }
+
+    /* brand bg */
+    .sp {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .42rem .85rem;
+      border-radius: 8px;
+      font-size: .8rem;
+      font-weight: 600;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, .08);
+      transition: transform .18s, filter .18s;
+    }
+
+    .sp:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.15)
+    }
+
+    .sp img {
+      width: 17px;
+      height: 17px;
+      object-fit: contain;
+      flex-shrink: 0
+    }
+
+    /* brand colours */
+    .sp-python {
+      background: #2b5b84
+    }
+
+    .sp-cpp {
+      background: #004482
+    }
+
+    .sp-js {
+      background: #b45309
+    }
+
+    .sp-json {
+      background: #2c2c2e;
+      border-color: #555
+    }
+
+    .sp-css {
+      background: #663399
+    }
+
+    .sp-git {
+      background: #c9300f
+    }
+
+    .sp-vscode {
+      background: #0b74d0
+    }
+
+    .sp-virtualbox {
+      background: #233A51
+    }
+
+    .sp-davinci {
+      background: #c77304
+    }
+
+    .sp-photoshop {
+      background: #00376b
+    }
+
+    .sp-vscode {
+      background: #007a1b
+    }
+
+    .sp-cubase {
+      background: #930d97
+    }
+
+    .sp-github {
+      background: #24292e;
+      border-color: #444
+    }
+
+    .sp-win {
+      background: #0a6eb4
+    }
+
+    .sp-mac {
+      background: #2c2c2e;
+      border-color: #555
+    }
+
+    .sp-html {
+      background: #2c2c2e;
+      border-color: #555
+    }
+
+    .sp-android {
+      background: #14b637
+    }
+
+    .sp-linux {
+      background: #d15b01
+    }
+
+    .sp-switch {
+      background: #d10101
+    }
+
+    .sp-xbox {
+      background: #1a8011
+    }
+
+    .sp-emu {
+      background: #7c3aed
+    }
+
+    .sp-tex {
+      background: #b45309
+    }
+
+    .sp-desk {
+      background: #0f766e
+    }
+
+    .sp-cfw {
+      background: #be185d
+    }
+
+    .sp-hw {
+      background: #374151
+    }
+
+    .sp-oss {
+      background: #065f46
+    }
+
+    /* domain pills */
+    .sp-plain {
+      background: var(--card);
+      color: var(--muted2);
+      border: 1px solid var(--border);
+      font-weight: 500;
+    }
+
+    /* ── COMMUNITY ── */
+    .comm-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem
+    }
+
+    .comm-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: all .22s;
+    }
+
+    .comm-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(236, 72, 153, .3)
+    }
+
+    .comm-head {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      margin-bottom: .8rem
+    }
+
+    .comm-ico {
+      width: 40px;
+      height: 40px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+
+    .ico-discord {
+      background: rgba(88, 101, 242, .25);
+      border: 1px solid rgba(88, 101, 242, .4)
+    }
+
+    .ico-reddit {
+      background: rgba(255, 69, 0, .2);
+      border: 1px solid rgba(255, 69, 0, .35)
+    }
+
+    .ico-paypal {
+      background: rgba(0, 100, 240, .2);
+      border: 1px solid rgba(0, 100, 240, .3)
+    }
+
+    .ico-patreon {
+      background: rgba(255, 66, 77, .2);
+      border: 1px solid rgba(255, 66, 77, .3)
+    }
+
+    .comm-name {
+      font-size: .92rem;
+      font-weight: 700;
+      color: var(--white)
+    }
+
+    .comm-sub {
+      font-size: .68rem;
+      color: var(--muted);
+      margin-top: .1rem
+    }
+
+    .comm-desc {
+      font-size: .83rem;
+      color: var(--muted2);
+      line-height: 1.62;
+      margin-bottom: .9rem
+    }
+
+    .comm-link {
+      font-size: .78rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      transition: gap .18s;
+    }
+
+    .comm-link:hover {
+      gap: .55rem
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      text-align: center;
+      padding: 5rem 3rem
+    }
+
+    .contact-desc {
+      color: var(--muted2);
+      margin-bottom: 2rem;
+      font-size: .93rem
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: .75rem
+    }
+
+    .cbadge {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .6rem 1.25rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--text);
+      transition: all .2s;
+    }
+
+    .cbadge:hover {
+      border-color: var(--pink);
+      color: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(236, 72, 153, .25)
+    }
+
+    .cbadge img {
+      width: 16px;
+      height: 16px
+    }
+
+    /* contact dropdown */
+    .contact-toggle-wrap {
+      margin: 0 auto 1.75rem;
+      display: flex;
+      justify-content: center;
+      width: 100%
+    }
+
+    #contact .section-title {
+      margin-bottom: 1rem
+    }
+
+    .contact-toggle {
+      cursor: pointer;
+      border: none;
+      outline: none
+    }
+
+    .contact-toggle:focus {
+      outline: none;
+      box-shadow: 0 4px 20px rgba(249, 115, 22, .35);
+    }
+
+    .contact-dropdown {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease, opacity .3s ease;
+      opacity: 0;
+    }
+
+    .contact-dropdown.open {
+      opacity: 1
+    }
+
+    .contact-form {
+      max-width: 480px;
+      margin: 1rem auto 1.75rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: left;
+    }
+
+    .cf-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 1rem
+    }
+
+    .cf-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px
+    }
+
+    .cf-group label {
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--muted2)
+    }
+
+    .cf-group input,
+    .cf-group textarea {
+      width: 100%;
+      padding: .65rem .8rem;
+      font-family: inherit;
+      font-size: .85rem;
+      color: var(--white);
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    .cf-group input:focus,
+    .cf-group textarea:focus {
+      border-color: var(--purple2)
+    }
+
+    .cf-group textarea {
+      resize: vertical;
+      min-height: 100px;
+      max-height: 500px
+    }
+
+    .cf-send {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .7rem 1.6rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--orange), #f43f5e);
+      color: #fff;
+      font-size: .85rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: all .22s;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .cf-send:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(249, 115, 22, .5)
+    }
+
+    .cf-send:disabled {
+      opacity: .5;
+      cursor: not-allowed
+    }
+
+    .cf-status {
+      font-size: .78rem;
+      color: var(--muted2);
+      text-align: center;
+      margin-top: .75rem;
+      display: none
+    }
+
+    @media (max-width:560px) {
+      .cf-row {
+        grid-template-columns: 1fr
+      }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: .75rem;
+      color: var(--muted);
+    }
+
+    footer .fo {
+      color: var(--orange)
+    }
+
+    footer .fp {
+      color: var(--purple2)
+    }
+
+    /* ── MODAL —— */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, .85);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .25s;
+    }
+
+    .overlay.open {
+      opacity: 1;
+      pointer-events: all
+    }
+
+    .modal {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      max-width: 580px;
+      width: 100%;
+      max-height: 82vh;
+      overflow-y: auto;
+      position: relative;
+      transform: translateY(18px);
+      transition: transform .25s;
+    }
+
+    .overlay.open .modal {
+      transform: none
+    }
+
+    .modal-x {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .18s;
+    }
+
+    .modal-x:hover {
+      color: #fff;
+      border-color: var(--pink)
+    }
+
+    .modal-org {
+      font-size: .68rem;
+      font-weight: 700;
+      color: var(--orange);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .4rem
+    }
+
+    .modal h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 1rem
+    }
+
+    .modal p {
+      font-size: .88rem;
+      color: var(--muted2);
+      margin-bottom: .8rem;
+      line-height: 1.75
+    }
+
+    .modal-tech-hd {
+      font-size: .65rem;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin: 1.2rem 0 .5rem
+    }
+
+    .tech-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem
+    }
+
+    .tc {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: .22rem .6rem;
+      font-size: .73rem;
+      color: var(--purple2);
+      font-weight: 600;
+    }
+
+    .modal-gh {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      margin-top: 1.1rem;
+      font-size: .82rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--orange), var(--pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity .55s ease, transform .55s ease
+    }
+
+    .reveal.on {
+      opacity: 1;
+      transform: none
+    }
+
+    /* ── KEYFRAMES ── */
+    @keyframes up {
+      from {
+        opacity: 0;
+        transform: translateY(16px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    @keyframes breathe {
+
+      0%,
+      100% {
+        transform: scale(1)
+      }
+
+      50% {
+        transform: scale(1.025)
+      }
+    }
+
+    @keyframes bubbleFloat {
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(1)
+      }
+
+      20% {
+        opacity: .6
+      }
+
+      80% {
+        opacity: .4
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-40px) scale(1.3)
+      }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:800px) {
+      .nav-brand {
+        display: none;
+      }
+
+      nav {
+        height: 44px;
+        padding: 0 1.2rem;
+      }
+
+      .nav-links {
+        gap: 0.8rem 1.2rem;
+      }
+
+      .nav-links a {
+        font-size: .78rem;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 1.5rem;
+      }
+
+      .photo-col {
+        margin: 0 auto;
+      }
+
+      .photo-ring {
+        width: 220px;
+        height: 220px;
+      }
+
+      .hero-pills {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-ctas {
+        justify-content: center;
+      }
+
+      .skills-2col {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .section-wrap {
+        padding: 4rem 1.5rem;
+      }
+
+      .hero-title {
+        white-space: normal;
+        font-size: clamp(2rem, 8vw, 3rem);
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav>
-  <a class="nav-brand" href="/"><em>&lt;</em> Link García <em>/&gt;</em></a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#community">Community</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+  <!-- NAV -->
+  <nav>
+    <a class="nav-brand" href="/"><em>&lt;</em> Link García <em>/&gt;</em></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#community">Community</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-glow-l"></div>
-  <div class="hero-glow-r"></div>
-  <div class="hero-inner">
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-glow-l"></div>
+    <div class="hero-glow-r"></div>
+    <div class="hero-inner">
 
-    <div class="photo-col">
-      <div class="photo-ring">
-        
-        <!-- breathing bubbles -->
-        <div class="bubbles">
-          <div class="bubble"></div>
-          <div class="bubble"></div>
-          <div class="bubble"></div>
-          <div class="bubble"></div>
-          <div class="bubble"></div>
-          <div class="bubble"></div>
-          <div class="bubble"></div>
+      <div class="photo-col">
+        <div class="photo-ring">
+
+          <!-- breathing bubbles -->
+          <div class="bubbles">
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+          </div>
+          <div class="photo-inner">
+            <img id="photo" src="photo-16bit.jpg" alt="Link"
+              style="width:100%;height:100%;object-fit:cover;border-radius:50%;transition:opacity 0.6s ease;">
+          </div>
         </div>
-        <div class="photo-inner">
-          <img id="photo" src="photo-16bit.jpg" alt="Link" style="width:100%;height:100%;object-fit:cover;border-radius:50%;transition:opacity 0.6s ease;">
+        <div class="hero-name">Link García</div>
+        <div class="hero-quirks">
+          <span class="quirk">Altruistic Dev</span>
+          <span class="quirk">Musician</span>
+          <span class="quirk">PPSSPP Modder</span>
+          <span class="quirk">Switch Homebrew</span>
+          <span class="quirk">Barcelona 🌍</span>
         </div>
       </div>
-      <div class="hero-name">Link García</div>
-      <div class="hero-quirks">
-        <span class="quirk">Altruistic Dev</span>
-        <span class="quirk">Musician</span>
-        <span class="quirk">PPSSPP Modder</span>
-        <span class="quirk">Switch Homebrew</span>
-        <span class="quirk">Barcelona 🌍</span>
+
+      <!-- RIGHT: text -->
+      <div class="hero-text">
+        <p class="hero-eyebrow">WELCOME TO MY PORTFOLIO!</p>
+        <p class="hero-quote">"I do my best"</p>
+        <h1 class="hero-title">Software Engineer</h1>
+        <div class="hero-pills">
+          <span class="pill-static pill-orange">Amateur Programmer</span>
+          <span class="pill-static pill-terminal"><span>&gt;</span><span id="tw">Tinkerer</span></span>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-big">10+</div>
+          <div class="stat-label">Years in the scene</div>
+        </div>
+        <div class="hero-ctas">
+          <a href="#projects" class="btn-orange">View My Work</a>
+          <a href="https://github.com/LiinkPK" target="_blank" class="btn-dark">⬡ GitHub</a>
+        </div>
       </div>
+
     </div>
+  </section>
 
-    <!-- RIGHT: text -->
-    <div class="hero-text">
-      <p class="hero-eyebrow">WELCOME TO MY PORTFOLIO!</p>
-      <p class="hero-quote">"I do my best"</p>
-      <h1 class="hero-title">Software Engineer</h1>
-      <div class="hero-pills">
-        <span class="pill-static pill-orange">Amateur Programmer</span>
-        <span class="pill-static pill-terminal"><span>&gt;</span><span id="tw">Tinkerer</span></span>
-      </div>
-      <div class="hero-stat">
-        <div class="stat-big">10+</div>
-        <div class="stat-label">Years in the scene</div>
-      </div>
-      <div class="hero-ctas">
-        <a href="#projects" class="btn-orange">View My Work</a>
-        <a href="https://github.com/LiinkPK" target="_blank" class="btn-dark">⬡ GitHub</a>
-      </div>
-    </div>
+  <hr class="div" />
 
-  </div>
-</section>
-
-<hr class="div"/>
-
-<!-- ABOUT -->
-<div class="section-wrap" id="about">
-  <h2 class="section-title reveal">About Me</h2>
-  <div class="about-card reveal">
-    <p class="about-p">
-      ● Altruistic developer and musician who builds tools for things I actually care about: <span class="hl-orange">emulation, preserving old games, usability</span>, and scratching my own itch. <span class="hl-purple">Not a game dev</span>, but I've been deep in the Switch and PPSSPP rabbit hole long enough to start contributing to it.
-    </p>
-    <p class="about-p">
-      ● Most of what I build is either solving a problem I ran into personally, or <span class="hl-purple">making life easier for the people around me</span>. If the workflow is a mess, I fix it. If nobody made the tool I need, <span class="hl-orange">I make it myself</span>.
-    </p>
-    <p class="about-p">
-      ● Part of the <span class="hl-orange">Switch Atmosphere/Switchway homebrew scene</span> since 2020, helping people with CFW, hardware repairs, and everything between firmware and soldering chips in and out.
-    </p>
-    <p class="about-p" style="margin-bottom:0">
-      ● Based in <span class="hl-purple">Barcelona</span>, building things I actually use, trying to take it one project at a time but I always end up getting involved in <span class="hl-orange"> more than two or three</span>.
-    </p>
-  </div>
-</div>
-
-<hr class="div"/>
-
-<!-- PROJECTS -->
-<div class="section-wrap" id="projects">
-  <h2 class="section-title reveal">Projects</h2>
-  <div class="projects-grid">
-    <div class="proj-card reveal" onclick="openModal('ppsspp-tool')">
-      <p class="proj-org">PPSSPP</p>
-      <h3 class="proj-title">Texture Replacement Tool</h3>
-      <p class="proj-desc">A desktop GUI for managing HD texture packs on PPSSPP. The existing workflow was scattered and painful, so I built a proper tool for it.</p>
-      <span class="proj-more">View full →</span>
-    </div>
-    <div class="proj-card reveal" onclick="openModal('dissidia')">
-      <p class="proj-org">Game remaster</p>
-      <h3 class="proj-title">Dissidia 012 HD Textures</h3>
-      <p class="proj-desc">High-res texture pack for Dissidia 012 on PPSSPP. Hand-crafted texture replacement project with active community feedback.</p>
-      <span class="proj-more">View full →</span>
-    </div>
-    <div class="proj-card reveal" onclick="openModal3('psprecomp-d012')">
-      <p class="proj-org">Reverse Engineering</p>
-      <h3 class="proj-title">WIP - Dissidia 012 PC Port</h3>
-      <p class="proj-desc">A static recompiler for Dissidia 012's PSP binary, translating MIPS machine code to native x86-64 C++ at build time. No emulator required.</p>
-      <span class="proj-more">View full →</span>
-    </div>
-    <div class="proj-card reveal" onclick="openModal('helpme')">
-      <p class="proj-org">Home Project</p>
-      <h3 class="proj-title">HelpMeKiddo</h3>
-      <p class="proj-desc">One-stop TV app launcher for the living room. Built so my family stops calling me for tech support every time they want to update their TV apps.</p>
-      <span class="proj-more">View full →</span>
-    </div>
-    <div class="proj-card reveal" onclick="openModal('ppsspp-fork')">
-      <p class="proj-org">One-click Dump</p>
-      <h3 class="proj-title">PPSSPP Fork</h3>
-      <p class="proj-desc">Added "Dump All Textures From ISO/Folder" to upstream PPSSPP. Small change but a significant time saver for texture pack builders.</p>
-      <span class="proj-more">View full →</span>
-    </div>
-    <div class="proj-card reveal" onclick="openModal2('bynoa')">
-      <p class="proj-org">Web Design</p>
-      <h3 class="proj-title">Noa Aguilera's Portfolio</h3>
-      <p class="proj-desc">Website creation for Noa Aguilera, a professional graphic designer. Website with dynamic grids, CTAs and different pages.</p>
-      <span class="proj-more">View full →</span>
-    </div>
-    <div class="proj-card reveal" onclick="openModal2('openqr')">
-      <p class="proj-org">Free QR Editor</p>
-      <h3 class="proj-title">OpenQR Studio</h3>
-      <p class="proj-desc">Website to generate fully customizable static QR codes client-side. No redirect servers, paywalls, or limits. 100% free and doesn't require login.</p>
-      <span class="proj-more">View full →</span>
-</div>
-  </div>
-</div>
-
-<hr class="div"/>
-
-<!-- SKILLS -->
-<div class="section-wrap" id="skills">
-  <h2 class="section-title reveal">Skills</h2>
-  <div class="skills-2col">
-
-    <div class="reveal">
-      <div class="skill-group-title">Languages</div>
-      <div class="skill-pills">
-        <span class="sp sp-python">
-          <img src="https://cdn.simpleicons.org/python/FFD43B" alt="">Python
-        </span>
-        <span class="sp sp-html">
-          <img src="https://cdn.simpleicons.org/htmx/E34F26" alt="">HTML
-        </span>
-        <span class="sp sp-cpp">
-          <img src="https://cdn.simpleicons.org/cplusplus/659AD2" alt="">C++
-        </span>
-        <span class="sp sp-css">
-          <img src="https://cdn.simpleicons.org/css/ffffff" alt="">CSS
-        </span>
-        <span class="sp sp-js">
-          <img src="https://cdn.simpleicons.org/javascript/ffee00" alt="">JavaScript
-        </span>
-        <span class="sp sp-json">
-          <img src="https://cdn.simpleicons.org/json/7c3aed" alt="">JSON
-        </span>
-      </div>
-    </div>
-
-    <div class="reveal">
-  <div class="skill-group-title">Tools</div>
-  <div class="skill-pills">
-    <span class="sp sp-git">
-      <img src="https://cdn.simpleicons.org/git/ffffff" alt="">Git
-    </span>
-    <span class="sp sp-vscode">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" alt="" style="width:17px;height:17px;filter:brightness(0) invert(1);">VS Code
-    </span>
-    <span class="sp sp-github">
-      <img src="https://cdn.simpleicons.org/github/ffffff" alt="">GitHub
-    </span>
-    <span class="sp sp-virtualbox">
-      <img src="https://cdn.simpleicons.org/VirtualBox/ffffff" alt="">VirtualBox
-    </span>
-    <span class="sp sp-davinci">
-      <img src="https://cdn.simpleicons.org/davinciresolve/ffffff" alt="">Davinci Resolve
-    </span>
-    <span class="sp sp-photoshop">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
-        <rect x="1" y="1" width="22" height="22" rx="4.5" ry="4.5" fill="none" stroke="white" stroke-width="0.8"/>
-        <text x="12" y="16" font-family="Arial" font-weight="600" font-size="12" fill="white" text-anchor="middle">Ps</text>
-      </svg>
-      Photoshop
-    </span>
-    <span class="sp sp-cubase">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 208.49 250.97" width="15" height="17">
-        <path d="M127.98,0l39.99,40.99c-51.03,4.27-84.04,48.67-74.7,99.2,6.85,37.04,42.35,65.08,79.7,64.8l-44.99,45.98h-3L0,125.98v-1L124.98,0h3Z" fill="white"/>
-        <path d="M168.73,88.24c9.25-1.19,17.74.78,25.15,6.33,32.03,23.97,6.64,72.99-30.71,61.71-35.35-10.68-30.71-63.37,5.56-68.04Z" fill="white"/>
-      </svg>
-      Cubase
-    </span>
-  </div>
-</div>
-
-    <div class="reveal">
-      <div class="skill-group-title">Platforms</div>
-      <div class="skill-pills">
-        <span class="sp sp-win">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 88" width="15" height="15" fill="white">
-            <rect x="0" y="0" width="41" height="41"/>
-            <rect x="47" y="0" width="41" height="41"/>
-            <rect x="0" y="47" width="41" height="41"/>
-            <rect x="47" y="47" width="41" height="41"/>
-          </svg>
-          Windows
-        </span>
-        <span class="sp sp-mac">
-          <img src="https://cdn.simpleicons.org/apple/ffffff" alt="">macOS
-        </span>
-        <span class="sp sp-android">
-          <img src="https://cdn.simpleicons.org/android/ffffff" alt="">Android
-        </span>
-        <span class="sp sp-linux">
-          <img src="https://cdn.simpleicons.org/linuxmint/ffffff" alt="">Linux
-        </span>
-        <span class="sp sp-switch">
-          <img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/nintendoswitch.svg" style="filter: brightness(0) invert(1); width:15px; height:15px;" alt="">Nintendo Switch
-        </span>
-        <span class="sp sp-xbox">
-          <img src="https://cdn.jsdelivr.net/npm/simple-icons@9/icons/xbox.svg" style="filter: brightness(0) invert(1); width:15px; height:15px;" alt="">Xbox
-        </span>
-      </div>
-    </div>
-
-    <div class="reveal">
-      <div class="skill-group-title">Domains</div>
-      <div class="skill-pills">
-        <span class="sp sp-emu">Emulation</span>
-        <span class="sp sp-tex">Texture Modding</span>
-        <span class="sp sp-desk">Music Composition</span>
-        <span class="sp sp-cfw">Switch CFW</span>
-        <span class="sp sp-hw">HW Repair</span>
-        <span class="sp sp-oss">Open Source</span>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<hr class="div"/>
-
-<!-- COMMUNITY -->
-<div class="section-wrap" id="community">
-  <h2 class="section-title reveal">Community &amp; Support</h2>
-  <div class="comm-grid">
-    <div class="comm-card reveal">
-      <div class="comm-head">
-        <div class="comm-ico ico-discord">💬</div>
-        <div><div class="comm-name">Dissidia Discord</div><div class="comm-sub">Community Server</div></div>
-      </div>
-      <p class="comm-desc">The official Discord server for the Dissidia 012 HD Remaster community. HD texture discussion, suggestions, feedback, and project updates.</p>
-      <a href="https://discord.gg/W9rcyMJ7br" class="comm-link" target="_blank">Join server →</a>
-    </div>
-    <div class="comm-card reveal">
-      <div class="comm-head">
-        <div class="comm-ico ico-reddit">🎨</div>
-        <div><div class="comm-name">Dissidia 012 HD Remaster</div><div class="comm-sub">Reddit · r/dissidia</div></div>
-      </div>
-      <p class="comm-desc">Original Reddit post announcing the Dissidia 012 HD Remastered texture project. Discussion, suggestions and very heart-warming messages.</p>
-      <a href="https://www.reddit.com/r/dissidia/comments/1g6peh2/dissidia_012_hd_remastered_wip/" class="comm-link" target="_blank">View post →</a>
-    </div>
-    <div class="comm-card reveal">
-      <div class="comm-head">
-        <div class="comm-ico ico-paypal">💙</div>
-        <div><div class="comm-name">Support via PayPal</div><div class="comm-sub">paypal.me/liinkpk</div></div>
-      </div>
-      <p class="comm-desc">If any of my projects have been useful to you, a tip is always appreciated and helps keep things going. Not mandatory, but it is a huge confidence boost.</p>
-      <a href="https://paypal.me/liinkpk" class="comm-link" target="_blank">Donate →</a>
-    </div>
-    <div class="comm-card reveal">
-      <div class="comm-head">
-        <div class="comm-ico ico-patreon">🤝</div>
-        <div><div class="comm-name">Patreon</div><div class="comm-sub">patreon.com/c/LinkG</div></div>
-      </div>
-      <p class="comm-desc">Support the Dissidia 012 HD Remaster project, get updates on what I'm working on and get a special Discord role through Patreon membership.</p>
-      <a href="https://patreon.com/c/LinkG/membership" class="comm-link" target="_blank">Become a member →</a>
+  <!-- ABOUT -->
+  <div class="section-wrap" id="about">
+    <h2 class="section-title reveal">About Me</h2>
+    <div class="about-card reveal">
+      <p class="about-p">
+        ● Altruistic developer and musician who builds tools for things I actually care about: <span
+          class="hl-orange">emulation, preserving old games, usability</span>, and scratching my own itch. <span
+          class="hl-purple">Not a game dev</span>, but I've been deep in the Switch and PPSSPP rabbit hole long enough
+        to start contributing to it.
+      </p>
+      <p class="about-p">
+        ● Most of what I build is either solving a problem I ran into personally, or <span class="hl-purple">making life
+          easier for the people around me</span>. If the workflow is a mess, I fix it. If nobody made the tool I need,
+        <span class="hl-orange">I make it myself</span>.
+      </p>
+      <p class="about-p">
+        ● Part of the <span class="hl-orange">Switch Atmosphere/Switchway homebrew scene</span> since 2020, helping
+        people with CFW, hardware repairs, and everything between firmware and soldering chips in and out.
+      </p>
+      <p class="about-p" style="margin-bottom:0">
+        ● Based in <span class="hl-purple">Barcelona</span>, building things I actually use, trying to take it one
+        project at a time but I always end up getting involved in <span class="hl-orange"> more than two or
+          three</span>.
+      </p>
     </div>
   </div>
-</div>
 
-<hr class="div"/>
+  <hr class="div" />
 
-<!-- CONTACT -->
-<section id="contact">
-  <h2 class="section-title reveal">Get In Touch</h2>
-
-  <div class="contact-toggle-wrap reveal">
-    <button class="btn-orange contact-toggle" id="contact-toggle" type="button">Contact Me!</button>
+  <!-- PROJECTS -->
+  <div class="section-wrap" id="projects">
+    <h2 class="section-title reveal">Projects</h2>
+    <div class="projects-grid">
+      <div class="proj-card reveal" onclick="openModal('ppsspp-tool')">
+        <p class="proj-org">PPSSPP</p>
+        <h3 class="proj-title">Texture Replacement Tool</h3>
+        <p class="proj-desc">A desktop GUI for managing HD texture packs on PPSSPP. The existing workflow was scattered
+          and painful, so I built a proper tool for it.</p>
+        <span class="proj-more">View full →</span>
+      </div>
+      <div class="proj-card reveal" onclick="openModal('dissidia')">
+        <p class="proj-org">Game remaster</p>
+        <h3 class="proj-title">Dissidia 012 HD Textures</h3>
+        <p class="proj-desc">High-res texture pack for Dissidia 012 on PPSSPP. Hand-crafted texture replacement project
+          with active community feedback.</p>
+        <span class="proj-more">View full →</span>
+      </div>
+      <div class="proj-card reveal" onclick="openModal3('dissidia012-pc')">
+        <p class="proj-org">Reverse Engineering</p>
+        <h3 class="proj-title">WIP - Dissidia 012 PC Port</h3>
+        <p class="proj-desc">A static recompiler for Dissidia 012's PSP binary, translating MIPS machine code to native
+          x86-64 C++ at build time. No emulator required.</p>
+        <span class="proj-more">View full →</span>
+      </div>
+      <div class="proj-card reveal" onclick="openModal('helpme')">
+        <p class="proj-org">Home Project</p>
+        <h3 class="proj-title">HelpMeKiddo</h3>
+        <p class="proj-desc">One-stop TV app launcher for the living room. Built so my family stops calling me for tech
+          support every time they want to update their TV apps.</p>
+        <span class="proj-more">View full →</span>
+      </div>
+      <div class="proj-card reveal" onclick="openModal('ppsspp-fork')">
+        <p class="proj-org">One-click Dump</p>
+        <h3 class="proj-title">PPSSPP Fork</h3>
+        <p class="proj-desc">Added "Dump All Textures From ISO/Folder" to upstream PPSSPP. Small change but a
+          significant time saver for texture pack builders.</p>
+        <span class="proj-more">View full →</span>
+      </div>
+      <div class="proj-card reveal" onclick="openModal2('bynoa')">
+        <p class="proj-org">Web Design</p>
+        <h3 class="proj-title">Noa Aguilera's Portfolio</h3>
+        <p class="proj-desc">Website creation for Noa Aguilera, a professional graphic designer. Website with dynamic
+          grids, CTAs and different pages.</p>
+        <span class="proj-more">View full →</span>
+      </div>
+      <div class="proj-card reveal" onclick="openModal2('openqr')">
+        <p class="proj-org">Free QR Editor</p>
+        <h3 class="proj-title">OpenQR Studio</h3>
+        <p class="proj-desc">Website to generate fully customizable static QR codes client-side. No redirect servers,
+          paywalls, or limits. 100% free and doesn't require login.</p>
+        <span class="proj-more">View full →</span>
+      </div>
+    </div>
   </div>
 
-  <div class="contact-dropdown" id="contact-dropdown">
-    <form class="contact-form" id="contact-form" action="https://formspree.io/f/xgojeovb" method="POST">
-      <div class="cf-row">
+  <hr class="div" />
+
+  <!-- SKILLS -->
+  <div class="section-wrap" id="skills">
+    <h2 class="section-title reveal">Skills</h2>
+    <div class="skills-2col">
+
+      <div class="reveal">
+        <div class="skill-group-title">Languages</div>
+        <div class="skill-pills">
+          <span class="sp sp-python">
+            <img src="https://cdn.simpleicons.org/python/FFD43B" alt="">Python
+          </span>
+          <span class="sp sp-html">
+            <img src="https://cdn.simpleicons.org/htmx/E34F26" alt="">HTML
+          </span>
+          <span class="sp sp-cpp">
+            <img src="https://cdn.simpleicons.org/cplusplus/659AD2" alt="">C++
+          </span>
+          <span class="sp sp-css">
+            <img src="https://cdn.simpleicons.org/css/ffffff" alt="">CSS
+          </span>
+          <span class="sp sp-js">
+            <img src="https://cdn.simpleicons.org/javascript/ffee00" alt="">JavaScript
+          </span>
+          <span class="sp sp-json">
+            <img src="https://cdn.simpleicons.org/json/7c3aed" alt="">JSON
+          </span>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="skill-group-title">Tools</div>
+        <div class="skill-pills">
+          <span class="sp sp-git">
+            <img src="https://cdn.simpleicons.org/git/ffffff" alt="">Git
+          </span>
+          <span class="sp sp-vscode">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" alt=""
+              style="width:17px;height:17px;filter:brightness(0) invert(1);">VS Code
+          </span>
+          <span class="sp sp-github">
+            <img src="https://cdn.simpleicons.org/github/ffffff" alt="">GitHub
+          </span>
+          <span class="sp sp-virtualbox">
+            <img src="https://cdn.simpleicons.org/VirtualBox/ffffff" alt="">VirtualBox
+          </span>
+          <span class="sp sp-davinci">
+            <img src="https://cdn.simpleicons.org/davinciresolve/ffffff" alt="">Davinci Resolve
+          </span>
+          <span class="sp sp-photoshop">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+              <rect x="1" y="1" width="22" height="22" rx="4.5" ry="4.5" fill="none" stroke="white"
+                stroke-width="0.8" />
+              <text x="12" y="16" font-family="Arial" font-weight="600" font-size="12" fill="white"
+                text-anchor="middle">Ps</text>
+            </svg>
+            Photoshop
+          </span>
+          <span class="sp sp-cubase">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 208.49 250.97" width="15" height="17">
+              <path
+                d="M127.98,0l39.99,40.99c-51.03,4.27-84.04,48.67-74.7,99.2,6.85,37.04,42.35,65.08,79.7,64.8l-44.99,45.98h-3L0,125.98v-1L124.98,0h3Z"
+                fill="white" />
+              <path
+                d="M168.73,88.24c9.25-1.19,17.74.78,25.15,6.33,32.03,23.97,6.64,72.99-30.71,61.71-35.35-10.68-30.71-63.37,5.56-68.04Z"
+                fill="white" />
+            </svg>
+            Cubase
+          </span>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="skill-group-title">Platforms</div>
+        <div class="skill-pills">
+          <span class="sp sp-win">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 88" width="15" height="15" fill="white">
+              <rect x="0" y="0" width="41" height="41" />
+              <rect x="47" y="0" width="41" height="41" />
+              <rect x="0" y="47" width="41" height="41" />
+              <rect x="47" y="47" width="41" height="41" />
+            </svg>
+            Windows
+          </span>
+          <span class="sp sp-mac">
+            <img src="https://cdn.simpleicons.org/apple/ffffff" alt="">macOS
+          </span>
+          <span class="sp sp-android">
+            <img src="https://cdn.simpleicons.org/android/ffffff" alt="">Android
+          </span>
+          <span class="sp sp-linux">
+            <img src="https://cdn.simpleicons.org/linuxmint/ffffff" alt="">Linux
+          </span>
+          <span class="sp sp-switch">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/nintendoswitch.svg"
+              style="filter: brightness(0) invert(1); width:15px; height:15px;" alt="">Nintendo Switch
+          </span>
+          <span class="sp sp-xbox">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@9/icons/xbox.svg"
+              style="filter: brightness(0) invert(1); width:15px; height:15px;" alt="">Xbox
+          </span>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="skill-group-title">Domains</div>
+        <div class="skill-pills">
+          <span class="sp sp-emu">Emulation</span>
+          <span class="sp sp-tex">Texture Modding</span>
+          <span class="sp sp-desk">Music Composition</span>
+          <span class="sp sp-cfw">Switch CFW</span>
+          <span class="sp sp-hw">HW Repair</span>
+          <span class="sp sp-oss">Open Source</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="div" />
+
+  <!-- COMMUNITY -->
+  <div class="section-wrap" id="community">
+    <h2 class="section-title reveal">Community &amp; Support</h2>
+    <div class="comm-grid">
+      <div class="comm-card reveal">
+        <div class="comm-head">
+          <div class="comm-ico ico-discord">💬</div>
+          <div>
+            <div class="comm-name">Dissidia Discord</div>
+            <div class="comm-sub">Community Server</div>
+          </div>
+        </div>
+        <p class="comm-desc">The official Discord server for the Dissidia 012 HD Remaster community. HD texture
+          discussion, suggestions, feedback, and project updates.</p>
+        <a href="https://discord.gg/W9rcyMJ7br" class="comm-link" target="_blank">Join server →</a>
+      </div>
+      <div class="comm-card reveal">
+        <div class="comm-head">
+          <div class="comm-ico ico-reddit">🎨</div>
+          <div>
+            <div class="comm-name">Dissidia 012 HD Remaster</div>
+            <div class="comm-sub">Reddit · r/dissidia</div>
+          </div>
+        </div>
+        <p class="comm-desc">Original Reddit post announcing the Dissidia 012 HD Remastered texture project. Discussion,
+          suggestions and very heart-warming messages.</p>
+        <a href="https://www.reddit.com/r/dissidia/comments/1g6peh2/dissidia_012_hd_remastered_wip/" class="comm-link"
+          target="_blank">View post →</a>
+      </div>
+      <div class="comm-card reveal">
+        <div class="comm-head">
+          <div class="comm-ico ico-paypal">💙</div>
+          <div>
+            <div class="comm-name">Support via PayPal</div>
+            <div class="comm-sub">paypal.me/liinkpk</div>
+          </div>
+        </div>
+        <p class="comm-desc">If any of my projects have been useful to you, a tip is always appreciated and helps keep
+          things going. Not mandatory, but it is a huge confidence boost.</p>
+        <a href="https://paypal.me/liinkpk" class="comm-link" target="_blank">Donate →</a>
+      </div>
+      <div class="comm-card reveal">
+        <div class="comm-head">
+          <div class="comm-ico ico-patreon">🤝</div>
+          <div>
+            <div class="comm-name">Patreon</div>
+            <div class="comm-sub">patreon.com/c/LinkG</div>
+          </div>
+        </div>
+        <p class="comm-desc">Support the Dissidia 012 HD Remaster project, get updates on what I'm working on and get a
+          special Discord role through Patreon membership.</p>
+        <a href="https://patreon.com/c/LinkG/membership" class="comm-link" target="_blank">Become a member →</a>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div" />
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-title reveal">Get In Touch</h2>
+
+    <div class="contact-toggle-wrap reveal">
+      <button class="btn-orange contact-toggle" id="contact-toggle" type="button">Contact Me!</button>
+    </div>
+
+    <div class="contact-dropdown" id="contact-dropdown">
+      <form class="contact-form" id="contact-form" action="https://formspree.io/f/xgojeovb" method="POST">
+        <div class="cf-row">
+          <div class="cf-group">
+            <label for="cf-name">First Name</label>
+            <input type="text" id="cf-name" name="first_name" autocomplete="given-name">
+          </div>
+          <div class="cf-group">
+            <label for="cf-lastname">Last Name</label>
+            <input type="text" id="cf-lastname" name="last_name" autocomplete="family-name">
+          </div>
+        </div>
         <div class="cf-group">
-          <label for="cf-name">First Name</label>
-          <input type="text" id="cf-name" name="first_name" autocomplete="given-name">
+          <label for="cf-email">E-mail</label>
+          <input type="email" id="cf-email" name="email" autocomplete="email">
+          <span id="email-error" style="display:none;color:var(--orange);font-size:.75rem">Please enter a valid email
+            address.</span>
         </div>
         <div class="cf-group">
-          <label for="cf-lastname">Last Name</label>
-          <input type="text" id="cf-lastname" name="last_name" autocomplete="family-name">
+          <label for="cf-subject">Subject</label>
+          <input type="text" id="cf-subject" name="subject">
         </div>
-      </div>
-      <div class="cf-group">
-        <label for="cf-email">E-mail</label>
-        <input type="email" id="cf-email" name="email" autocomplete="email">
-        <span id="email-error" style="display:none;color:var(--orange);font-size:.75rem">Please enter a valid email address.</span>
-      </div>
-      <div class="cf-group">
-        <label for="cf-subject">Subject</label>
-        <input type="text" id="cf-subject" name="subject">
-      </div>
-      <div class="cf-group">
-        <label for="cf-message">Message <span id="char-count" style="float:right;font-weight:400;color:var(--muted2)">0 / 600</span></label>
-        <textarea id="cf-message" name="message" maxlength="600"></textarea>
-      </div>
-      <button class="cf-send" type="submit" id="cf-send-btn" disabled>Send</button>
-      <p class="cf-status" id="cf-status"></p>
-    </form>
+        <div class="cf-group">
+          <label for="cf-message">Message <span id="char-count"
+              style="float:right;font-weight:400;color:var(--muted2)">0 / 600</span></label>
+          <textarea id="cf-message" name="message" maxlength="600"></textarea>
+        </div>
+        <button class="cf-send" type="submit" id="cf-send-btn" disabled>Send</button>
+        <p class="cf-status" id="cf-status"></p>
+      </form>
+    </div>
+
+    <p class="contact-desc reveal">Open to collaborations, modding questions, or just a chat about emulation and
+      homebrew.</p>
+    <div class="contact-links reveal">
+      <a href="https://github.com/LiinkPK" class="cbadge" target="_blank"><img
+          src="https://cdn.simpleicons.org/github/ffffff" alt="">GitHub</a>
+      <a href="https://discord.gg/W9rcyMJ7br" class="cbadge" target="_blank"><img
+          src="https://cdn.simpleicons.org/discord/5865F2" alt="">Discord</a>
+      <a href="https://www.reddit.com/r/dissidia/comments/1g6peh2/dissidia_012_hd_remastered_wip/" class="cbadge"
+        target="_blank"><img src="https://cdn.simpleicons.org/reddit/FF4500" alt="">Reddit</a>
+      <a href="https://paypal.me/liinkpk" class="cbadge" target="_blank"><img
+          src="https://cdn.simpleicons.org/paypal/003087" alt="">PayPal</a>
+      <a href="https://patreon.com/c/LinkG/membership" class="cbadge" target="_blank"><img
+          src="https://cdn.simpleicons.org/patreon/FF424D" alt="">Patreon</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="fo">&lt;</span> Built with passion by <a class="fp" href="/">Link García</a> <span
+      class="fo">/&gt;</span> &nbsp;●&nbsp; © 2026
+  </footer>
+
+  <!-- MODAL -->
+  <div class="overlay" id="ov" onclick="closeOut(event)">
+    <div class="modal">
+      <div class="modal-x" onclick="closeModal()">✕</div>
+      <div id="mbody"></div>
+    </div>
   </div>
 
-  <p class="contact-desc reveal">Open to collaborations, modding questions, or just a chat about emulation and homebrew.</p>
-  <div class="contact-links reveal">
-    <a href="https://github.com/LiinkPK" class="cbadge" target="_blank"><img src="https://cdn.simpleicons.org/github/ffffff" alt="">GitHub</a>
-    <a href="https://discord.gg/W9rcyMJ7br" class="cbadge" target="_blank"><img src="https://cdn.simpleicons.org/discord/5865F2" alt="">Discord</a>
-    <a href="https://www.reddit.com/r/dissidia/comments/1g6peh2/dissidia_012_hd_remastered_wip/" class="cbadge" target="_blank"><img src="https://cdn.simpleicons.org/reddit/FF4500" alt="">Reddit</a>
-    <a href="https://paypal.me/liinkpk" class="cbadge" target="_blank"><img src="https://cdn.simpleicons.org/paypal/003087" alt="">PayPal</a>
-    <a href="https://patreon.com/c/LinkG/membership" class="cbadge" target="_blank"><img src="https://cdn.simpleicons.org/patreon/FF424D" alt="">Patreon</a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <span class="fo">&lt;</span> Built with passion by <a class="fp" href="/">Link García</a> <span class="fo">/&gt;</span> &nbsp;●&nbsp; © 2026
-</footer>
-
-<!-- MODAL -->
-<div class="overlay" id="ov" onclick="closeOut(event)">
-  <div class="modal">
-    <div class="modal-x" onclick="closeModal()">✕</div>
-    <div id="mbody"></div>
-  </div>
-</div>
-
-<script>
-const MODALS={
-  'ppsspp-tool':{org:'PPSSPP · Desktop App',title:'Texture Replacement Tool for PPSSPP',
-    body:`<p>A desktop GUI for managing HD texture packs on PPSSPP. The existing workflow involved manually organizing folders, renaming files, and cross-referencing texture hashes — painful for anyone building or using a texture pack.</p><p>This tool gives you a proper interface for all of it: browsing, applying, and managing HD texture replacements for any game on PPSSPP.</p>`,
-    tech:['Python','Desktop GUI','PPSSPP','Windows'],link:'https://github.com/LiinkPK/Texture-Replacement-Tool-for-PPSSPP'},
-  'dissidia':{org:'Final Fantasy · Texture Mod',title:'Dissidia 012 HD Remastered Textures',
-    body:`<p>High-resolution texture pack for Dissidia 012 Final Fantasy, designed for the PPSSPP emulator. A fork of AkiraJkr's original work, extended and maintained with higher fidelity assets.</p><p>The project gained traction in the Dissidia community on Reddit and Discord, with ongoing development shaped by community feedback.</p>`,
-    tech:['Texture Modding','PPSSPP','Image Processing'],link:'https://github.com/LiinkPK/Dissidia-012-HD-Textures'},
-  'helpme':{org:'Home Project · Desktop App',title:'HelpMeKiddo',
-    body:`<p>A TV app launcher for the living room — one place for all streaming and TV apps, without navigating smart TV menus or calling someone for help.</p><p>Built specifically so non-technical family members can get to what they want from a single, simple interface. The name says it all.</p>`,
-    tech:['Python','Desktop App','Windows','TV/Media'],link:'https://github.com/LiinkPK/HelpMeKiddo'},
-  'ppsspp-fork':{org:'Open Source · PPSSPP',title:'PPSSPP Fork — Dump Textures from ISO',
-    body:`<p>A fork of the upstream PPSSPP emulator with one key addition: the ability to dump textures directly from an ISO or folder, without needing to run through the full game to trigger texture loads.</p><p>Small change, significant time saver for building texture packs.</p>`,
-    tech:['C++','PPSSPP','Open Source','Emulation'],link:'https://github.com/LiinkPK/ppsspp'},
-  'bynoa':{org:'Web Design · HTML',title:'',
-    body:`<p>Website creation for Noa Aguilera, a professional graphic designer. Website with dynamic grids, CTAs and different pages.</p><p>Client wanted to migrate from Squarespace and host the website locally.</p>`,
-    tech:['HTML','CSS','Windows','Graphic Design'],link:'https://bynoas.com'},
-  'openqr':{org:'QR Generator · Website',title:'OpenQR Studio',
-    body:`<p>A browser-based generator for static QR codes encoded directly on your device. Because data is embedded into the matrix itself, links never expire and require no intermediate tracking servers. Access is completely free, with optional accounts available to sync designs across devices and retain re-editable templates.</p>`,
-    tech:['JavaScript','HTML/CSS','OAuth','Cloudflare'],link:'https://openqrstudio.com'},
-  'psprecomp-d012':{org:'Reverse Engineering · PSP Game',title:'WIP - Dissidia 012 PC Port',
-    body:`<p>A static recompiler for Dissidia 012's PSP binary, converting MIPS machine code to native x86-64 C++ at build time. No emulator is needed.</p><p>Development is completely open, with reversing done through the recompiled output itself, tracing register states, memory layouts, and call chains to reconstruct the original engine.</p>`,
-    tech:['Ghidra','C++','C#','MIPS'],link1:'https://github.com/LiinkPK/PSPRecomp-d012',link2:'https://linkgarcia.com/PSPRecomp-d012/'}
-};
-function openModal(id){
-  const d=MODALS[id];
-  document.getElementById('mbody').innerHTML=`
+  <script>
+    const MODALS = {
+      'ppsspp-tool': {
+        org: 'PPSSPP · Desktop App', title: 'Texture Replacement Tool for PPSSPP',
+        body: `<p>A desktop GUI for managing HD texture packs on PPSSPP. The existing workflow involved manually organizing folders, renaming files, and cross-referencing texture hashes — painful for anyone building or using a texture pack.</p><p>This tool gives you a proper interface for all of it: browsing, applying, and managing HD texture replacements for any game on PPSSPP.</p>`,
+        tech: ['Python', 'Desktop GUI', 'PPSSPP', 'Windows'], link: 'https://github.com/LiinkPK/Texture-Replacement-Tool-for-PPSSPP'
+      },
+      'dissidia': {
+        org: 'Final Fantasy · Texture Mod', title: 'Dissidia 012 HD Remastered Textures',
+        body: `<p>High-resolution texture pack for Dissidia 012 Final Fantasy, designed for the PPSSPP emulator. A fork of AkiraJkr's original work, extended and maintained with higher fidelity assets.</p><p>The project gained traction in the Dissidia community on Reddit and Discord, with ongoing development shaped by community feedback.</p>`,
+        tech: ['Texture Modding', 'PPSSPP', 'Image Processing'], link: 'https://github.com/LiinkPK/Dissidia-012-HD-Textures'
+      },
+      'helpme': {
+        org: 'Home Project · Desktop App', title: 'HelpMeKiddo',
+        body: `<p>A TV app launcher for the living room — one place for all streaming and TV apps, without navigating smart TV menus or calling someone for help.</p><p>Built specifically so non-technical family members can get to what they want from a single, simple interface. The name says it all.</p>`,
+        tech: ['Python', 'Desktop App', 'Windows', 'TV/Media'], link: 'https://github.com/LiinkPK/HelpMeKiddo'
+      },
+      'ppsspp-fork': {
+        org: 'Open Source · PPSSPP', title: 'PPSSPP Fork — Dump Textures from ISO',
+        body: `<p>A fork of the upstream PPSSPP emulator with one key addition: the ability to dump textures directly from an ISO or folder, without needing to run through the full game to trigger texture loads.</p><p>Small change, significant time saver for building texture packs.</p>`,
+        tech: ['C++', 'PPSSPP', 'Open Source', 'Emulation'], link: 'https://github.com/LiinkPK/ppsspp'
+      },
+      'bynoa': {
+        org: 'Web Design · HTML', title: '',
+        body: `<p>Website creation for Noa Aguilera, a professional graphic designer. Website with dynamic grids, CTAs and different pages.</p><p>Client wanted to migrate from Squarespace and host the website locally.</p>`,
+        tech: ['HTML', 'CSS', 'Windows', 'Graphic Design'], link: 'https://bynoas.com'
+      },
+      'openqr': {
+        org: 'QR Generator · Website', title: 'OpenQR Studio',
+        body: `<p>A browser-based generator for static QR codes encoded directly on your device. Because data is embedded into the matrix itself, links never expire and require no intermediate tracking servers. Access is completely free, with optional accounts available to sync designs across devices and retain re-editable templates.</p>`,
+        tech: ['JavaScript', 'HTML/CSS', 'OAuth', 'Cloudflare'], link: 'https://openqrstudio.com'
+      },
+      'dissidia012-pc': {
+        org: 'Reverse Engineering · PSP Game', title: 'WIP - Dissidia 012 PC Port',
+        body: `<p>A static recompiler for Dissidia 012's PSP binary, converting MIPS machine code to native x86-64 C++ at build time. No emulator is needed.</p><p>Development is completely open, with reversing done through the recompiled output itself, tracing register states, memory layouts, and call chains to reconstruct the original engine.</p>`,
+        tech: ['Ghidra', 'C++', 'C#', 'MIPS'], link1: 'https://github.com/LiinkPK/Dissidia012-PC', link2: 'https://linkgarcia.com/Dissidia012-PC/'
+      }
+    };
+    function openModal(id) {
+      const d = MODALS[id];
+      document.getElementById('mbody').innerHTML = `
     <p class="modal-org">${d.org}</p><h3>${d.title}</h3>${d.body}
     <p class="modal-tech-hd">Tech Used</p>
-    <div class="tech-chips">${d.tech.map(t=>`<span class="tc">${t}</span>`).join('')}</div>
+    <div class="tech-chips">${d.tech.map(t => `<span class="tc">${t}</span>`).join('')}</div>
     <a href="${d.link}" class="modal-gh" target="_blank">View on GitHub ↗</a>`;
-  document.getElementById('ov').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeModal(){document.getElementById('ov').classList.remove('open');document.body.style.overflow='';}
-function closeOut(e){if(e.target===document.getElementById('ov'))closeModal();}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+      document.getElementById('ov').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() { document.getElementById('ov').classList.remove('open'); document.body.style.overflow = ''; }
+    function closeOut(e) { if (e.target === document.getElementById('ov')) closeModal(); }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-function openModal2(id){
-  const d=MODALS[id];
-  document.getElementById('mbody').innerHTML=`
+    function openModal2(id) {
+      const d = MODALS[id];
+      document.getElementById('mbody').innerHTML = `
     <p class="modal-org">${d.org}</p><h3>${d.title}</h3>${d.body}
     <p class="modal-tech-hd">Tech Used</p>
-    <div class="tech-chips">${d.tech.map(t=>`<span class="tc">${t}</span>`).join('')}</div>
+    <div class="tech-chips">${d.tech.map(t => `<span class="tc">${t}</span>`).join('')}</div>
     <a href="${d.link}" class="modal-gh" target="_blank">View website ↗</a>`;
-  document.getElementById('ov').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeModal(){document.getElementById('ov').classList.remove('open');document.body.style.overflow='';}
-function closeOut(e){if(e.target===document.getElementById('ov'))closeModal();}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+      document.getElementById('ov').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() { document.getElementById('ov').classList.remove('open'); document.body.style.overflow = ''; }
+    function closeOut(e) { if (e.target === document.getElementById('ov')) closeModal(); }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-function openModal3(id){
-  const d=MODALS[id];
-  document.getElementById('mbody').innerHTML=`
+    function openModal3(id) {
+      const d = MODALS[id];
+      document.getElementById('mbody').innerHTML = `
     <p class="modal-org">${d.org}</p><h3>${d.title}</h3>${d.body}
     <p class="modal-tech-hd">Tech Used</p>
-    <div class="tech-chips">${d.tech.map(t=>`<span class="tc">${t}</span>`).join('')}</div>
+    <div class="tech-chips">${d.tech.map(t => `<span class="tc">${t}</span>`).join('')}</div>
     <a href="${d.link1}" class="modal-gh" target="_blank">View on GitHub ↗</a>
     <a href="${d.link2}" class="modal-gh" target="_blank" style="margin-left: 12px">View progress ↗</a>`;
-  document.getElementById('ov').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeModal(){document.getElementById('ov').classList.remove('open');document.body.style.overflow='';}
-function closeOut(e){if(e.target===document.getElementById('ov'))closeModal();}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
-
-// scroll reveal
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      const siblings=[...e.target.parentElement.querySelectorAll('.reveal:not(.on)')];
-      siblings.forEach((s,i)=>{s.style.transitionDelay=i*.08+'s';s.classList.add('on');});
+      document.getElementById('ov').classList.add('open');
+      document.body.style.overflow = 'hidden';
     }
-  });
-},{threshold:0.08});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    function closeModal() { document.getElementById('ov').classList.remove('open'); document.body.style.overflow = ''; }
+    function closeOut(e) { if (e.target === document.getElementById('ov')) closeModal(); }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-// typewriter terminal pill
-const phrases=['Tinkerer','Texture Modder','Homebrew Dev','Open Source','Musician', 'Composer'];
-let pi=0,ci=0,del=false;
-const tw=document.getElementById('tw');
-function type(){
-  const p=phrases[pi];
-  if(!del){ci++;tw.textContent=p.slice(0,ci);if(ci===p.length){del=true;setTimeout(type,1600);return;}}
-  else{ci--;tw.textContent=p.slice(0,ci);if(ci===0){del=false;pi=(pi+1)%phrases.length;}}
-  setTimeout(type,del?40:75);
-}
-setTimeout(type,1000);
+    // scroll reveal
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const siblings = [...e.target.parentElement.querySelectorAll('.reveal:not(.on)')];
+          siblings.forEach((s, i) => { s.style.transitionDelay = i * .08 + 's'; s.classList.add('on'); });
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-// contact dropdown toggle
-const cToggle=document.getElementById('contact-toggle');
-const cDropdown=document.getElementById('contact-dropdown');
-cToggle.addEventListener('click',()=>{
-  const isOpen=cDropdown.classList.toggle('open');
-  cDropdown.style.maxHeight=isOpen?cDropdown.scrollHeight+'px':'0';
-});
+    // typewriter terminal pill
+    const phrases = ['Tinkerer', 'Texture Modder', 'Homebrew Dev', 'Open Source', 'Musician', 'Composer'];
+    let pi = 0, ci = 0, del = false;
+    const tw = document.getElementById('tw');
+    function type() {
+      const p = phrases[pi];
+      if (!del) { ci++; tw.textContent = p.slice(0, ci); if (ci === p.length) { del = true; setTimeout(type, 1600); return; } }
+      else { ci--; tw.textContent = p.slice(0, ci); if (ci === 0) { del = false; pi = (pi + 1) % phrases.length; } }
+      setTimeout(type, del ? 40 : 75);
+    }
+    setTimeout(type, 1000);
 
-new ResizeObserver(()=>{
-  if(cDropdown.classList.contains('open')){
-    cDropdown.style.maxHeight=cDropdown.scrollHeight+'px';
-  }
-}).observe(document.getElementById('cf-message'));
-
-// contact form validation + submit
-const cfFields=['cf-name','cf-lastname','cf-email','cf-subject','cf-message'];
-const cfBtn=document.getElementById('cf-send-btn');
-const cfEmailRegex=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-function cfCheckAll(){
-  const allFilled=cfFields.every(id=>document.getElementById(id).value.trim()!=='');
-  const emailValid=cfEmailRegex.test(document.getElementById('cf-email').value);
-  cfBtn.disabled=!(allFilled&&emailValid);
-}
-cfFields.forEach(id=>document.getElementById(id).addEventListener('input',cfCheckAll));
-
-document.getElementById('cf-email').addEventListener('blur',function(){
-  var err=document.getElementById('email-error');
-  var val=this.value;
-  var valid=cfEmailRegex.test(val);
-  err.style.display=(val!==''&&!valid)?'block':'none';
-});
-
-document.getElementById('cf-message').addEventListener('input',function(){
-  document.getElementById('char-count').textContent=this.value.length+' / 600';
-  this.style.height='auto';
-  this.style.height=Math.min(this.scrollHeight,600)+'px';
-  if(cDropdown.classList.contains('open')){
-    cDropdown.style.maxHeight=cDropdown.scrollHeight+'px';
-  }
-});
-
-document.getElementById('contact-form').addEventListener('submit',function(e){
-  e.preventDefault();
-  const form=e.target;
-  const status=document.getElementById('cf-status');
-  const data=new FormData(form);
-  cfBtn.disabled=true;
-  fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}})
-    .then(res=>{
-      status.style.display='block';
-      if(res.ok){
-        status.textContent='Thank you for reaching out! I\'ll get back to you soon.';
-        status.style.color='var(--purple2)';
-        setTimeout(()=>{
-        cDropdown.classList.remove('open');
-        cDropdown.style.maxHeight='0';
-        status.style.display='none';
-        form.reset();
-        document.getElementById('cf-message').style.height='auto';
-      },3000);
-      }else{
-        status.textContent='Something went wrong. Please try again.';
-        status.style.color='var(--orange)';
-        cfBtn.disabled=false;
-      }
-    })
-    .catch(()=>{
-      status.style.display='block';
-      status.textContent='Network error. Please check your connection.';
-      status.style.color='var(--orange)';
-      cfBtn.disabled=false;
+    // contact dropdown toggle
+    const cToggle = document.getElementById('contact-toggle');
+    const cDropdown = document.getElementById('contact-dropdown');
+    cToggle.addEventListener('click', () => {
+      const isOpen = cDropdown.classList.toggle('open');
+      cDropdown.style.maxHeight = isOpen ? cDropdown.scrollHeight + 'px' : '0';
     });
-});
-</script>
+
+    new ResizeObserver(() => {
+      if (cDropdown.classList.contains('open')) {
+        cDropdown.style.maxHeight = cDropdown.scrollHeight + 'px';
+      }
+    }).observe(document.getElementById('cf-message'));
+
+    // contact form validation + submit
+    const cfFields = ['cf-name', 'cf-lastname', 'cf-email', 'cf-subject', 'cf-message'];
+    const cfBtn = document.getElementById('cf-send-btn');
+    const cfEmailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    function cfCheckAll() {
+      const allFilled = cfFields.every(id => document.getElementById(id).value.trim() !== '');
+      const emailValid = cfEmailRegex.test(document.getElementById('cf-email').value);
+      cfBtn.disabled = !(allFilled && emailValid);
+    }
+    cfFields.forEach(id => document.getElementById(id).addEventListener('input', cfCheckAll));
+
+    document.getElementById('cf-email').addEventListener('blur', function () {
+      var err = document.getElementById('email-error');
+      var val = this.value;
+      var valid = cfEmailRegex.test(val);
+      err.style.display = (val !== '' && !valid) ? 'block' : 'none';
+    });
+
+    document.getElementById('cf-message').addEventListener('input', function () {
+      document.getElementById('char-count').textContent = this.value.length + ' / 600';
+      this.style.height = 'auto';
+      this.style.height = Math.min(this.scrollHeight, 600) + 'px';
+      if (cDropdown.classList.contains('open')) {
+        cDropdown.style.maxHeight = cDropdown.scrollHeight + 'px';
+      }
+    });
+
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const status = document.getElementById('cf-status');
+      const data = new FormData(form);
+      cfBtn.disabled = true;
+      fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+        .then(res => {
+          status.style.display = 'block';
+          if (res.ok) {
+            status.textContent = 'Thank you for reaching out! I\'ll get back to you soon.';
+            status.style.color = 'var(--purple2)';
+            setTimeout(() => {
+              cDropdown.classList.remove('open');
+              cDropdown.style.maxHeight = '0';
+              status.style.display = 'none';
+              form.reset();
+              document.getElementById('cf-message').style.height = 'auto';
+            }, 3000);
+          } else {
+            status.textContent = 'Something went wrong. Please try again.';
+            status.style.color = 'var(--orange)';
+            cfBtn.disabled = false;
+          }
+        })
+        .catch(() => {
+          status.style.display = 'block';
+          status.textContent = 'Network error. Please check your connection.';
+          status.style.color = 'var(--orange)';
+          cfBtn.disabled = false;
+        });
+    });
+  </script>
 </body>
+
 </html>
